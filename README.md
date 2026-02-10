@@ -1,0 +1,1 @@
+# Adapter-revamp-template
