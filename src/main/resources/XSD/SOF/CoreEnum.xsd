@@ -1,0 +1,1917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns:Q1="www.fawry-eg.com/ebpp/IFXMessages/">
+
+
+	<simpleType name="OfficialIdTypeEnum">
+		<restriction base="string">
+			<enumeration value="NAT"></enumeration>
+			<enumeration value="OIN"></enumeration>
+			<enumeration value="ACT"></enumeration>
+			<enumeration value="FID"></enumeration>
+			<enumeration value="BTL"></enumeration>
+			<enumeration value="BEN"></enumeration>
+			<enumeration value="MEN"></enumeration>
+			<enumeration value="FEN"></enumeration>
+			<enumeration value="PAS"></enumeration>
+			<enumeration value="CIF"></enumeration>
+			<enumeration value="FCN"></enumeration>
+			<enumeration value="CORL"></enumeration>
+			<enumeration value="CRN"></enumeration>
+			<enumeration value="SLN"></enumeration>
+			<enumeration value="SPL"></enumeration>
+			<enumeration value="MID"></enumeration>
+			<enumeration value="BCIF"></enumeration>
+			<enumeration value="PCIF"></enumeration>
+			<enumeration value="AGENT_CIF"></enumeration>
+			<enumeration value="PARTNID"></enumeration>
+			<enumeration value="MACTID"></enumeration>
+			<enumeration value="SALESREPID"></enumeration>
+			<enumeration value="GOVNAT "></enumeration>
+			<enumeration value="ACCT_REF_NUM "></enumeration>	
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="TerminalStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+			<enumeration value="BLOCKED"></enumeration>
+			<enumeration value="SUSPENDED"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="PmtTypeEnum">
+		<restriction base="string">
+			<enumeration value="POST"></enumeration>
+			<enumeration value="PREP"></enumeration>
+			<enumeration value="VOCH"></enumeration>
+			<maxLength value="8"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ProgramStatusEnum">
+		<restriction base="string">
+			<enumeration value="Active"></enumeration>
+			<enumeration value="Blocked"></enumeration>
+			<enumeration value="Terminated"></enumeration>
+			<maxLength value="25"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ServiceTypeEnum">
+		<restriction base="string">
+			<enumeration value="CIP"></enumeration>
+			<enumeration value="ELC"></enumeration>
+			<enumeration value="PHN"></enumeration>
+
+			<enumeration value="INS"></enumeration>
+			<enumeration value="BKS"></enumeration>
+			<enumeration value="GOV"></enumeration>
+			<enumeration value="MED"></enumeration>
+			<enumeration value="CCR"></enumeration>
+			<enumeration value="UTL"></enumeration>
+			<enumeration value="EXM"></enumeration>
+			<enumeration value="TRV"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AcctInputMethodEnum">
+		<restriction base="string">
+			<enumeration value="KP"></enumeration>
+			<enumeration value="CR"></enumeration>
+			<enumeration value="KC"></enumeration>
+			<enumeration value="SC"></enumeration>
+			<enumeration value="NI"></enumeration>
+			<enumeration value="SK"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="PmtSearchTypeEnum">
+		<restriction base="string">
+			<enumeration value="CCARD"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="OrderStatusEnum">
+		<restriction base="string">
+
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="DeliveryMethodEnum">
+		<restriction base="string">
+			<enumeration value="ATM"></enumeration>
+			<enumeration value="IVR"></enumeration>
+			<enumeration value="KSK"></enumeration>
+			<enumeration value="INT"></enumeration>
+			<enumeration value="MOB"></enumeration>
+			<enumeration value="PTL"></enumeration>
+			<enumeration value="BTL"></enumeration>
+			<enumeration value="POS"></enumeration>
+			<enumeration value="CAM"></enumeration>
+			<enumeration value="CCC"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="BatchTypeEnum">
+		<restriction base="string">
+			<enumeration value="DebitAddRs"></enumeration>
+			<enumeration value="DebitRevRs"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OfficialIdTypeOpenEnum">
+		<union
+			memberTypes="tns:OfficialIdTypeEnum tns:OfficialIdTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="TerminalStatusOpenEnum">
+		<union
+			memberTypes="tns:TerminalStatusEnum tns:TerminalStatusOpenEnumBaseType"></union>
+	</simpleType>
+	
+	<simpleType name="ProgramStatusOpenEnum">
+		<union
+			memberTypes="tns:ProgramStatusEnum tns:ProgramStatusOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="PmtTypeOpenEnum">
+		<union memberTypes="tns:PmtTypeEnum tns:PmtTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="ServiceTypeOpenEnum">
+		<union
+			memberTypes="tns:ServiceTypeEnum tns:ServiceTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="AcctInputMethodOpenEnum">
+		<union
+			memberTypes="tns:AcctInputMethodEnum tns:AcctInputMethodOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="BillSummAmtCodeOpenEnum">
+		<union
+			memberTypes="tns:BillSummAmtCodeEnum tns:BillSummAmtCodeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="CurCodeOpenEnum">
+		<union memberTypes="tns:CurCodeEnum tns:CurCodeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="DimensionUnitOpenEnum">
+		<union
+			memberTypes="tns:DimensionUnitEnum tns:DimensionUnitOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="WeightUnitOpenEnum">
+		<union
+			memberTypes="tns:WeightUnitEnum tns:WeightUnitOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="DeliveryMethodOpenEnum">
+		<union
+			memberTypes="tns:DeliveryMethodEnum tns:DeliveryMethodOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="OrderStatusOpenEnum">
+		<union
+			memberTypes="tns:OrderStatusEnum tns:OrderStatusOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="BatchTypeOpenEnum">
+		<union
+			memberTypes="tns:BatchTypeEnum tns:BatchTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="PmtSearchTypeOpenEnum">
+		<union
+			memberTypes="tns:PmtSearchTypeEnum tns:PmtSearchTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="BillStatusEnum">
+		<restriction base="string">
+			<enumeration value="BillPaid"></enumeration>
+			<enumeration value="BillPartialPd"></enumeration>
+			<enumeration value="BillOverPd"></enumeration>
+			<enumeration value="BillUnpaid"></enumeration>
+			<enumeration value="BillDeactive"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillerStatusEnum">
+		<restriction base="string">
+			<enumeration value="Available"></enumeration>
+			<enumeration value="AvailPend"></enumeration>
+			<enumeration value="Deleted"></enumeration>
+			<enumeration value="DelPend"></enumeration>
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillStatusOpenEnum">
+		<union
+			memberTypes="tns:BillStatusEnum tns:BillStatusOpenEnumBaseType"></union>
+	</simpleType>
+	<simpleType name="SeverityEnum">
+		<restriction base="string">
+			<enumeration value="Error"></enumeration>
+			<enumeration value="Warning"></enumeration>
+			<enumeration value="Info"></enumeration>
+
+			<maxLength value="8"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="CurCodeEnum">
+		<restriction base="string">
+			<enumeration value="EGP"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DimensionUnitEnum">
+		<restriction base="string">
+			<enumeration value="Inches"></enumeration>
+			<enumeration value="Centimeters"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WeightUnitEnum">
+		<restriction base="string">
+			<enumeration value="Grams"></enumeration>
+			<enumeration value="KGrams"></enumeration>
+			<enumeration value="Pounds"></enumeration>
+			<enumeration value="Ounces"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillSummAmtCodeEnum">
+		<restriction base="string">
+			<enumeration value="TotalAmtDue"></enumeration>
+			<enumeration value="Fees"></enumeration>
+			<enumeration value="Charges"></enumeration>
+			<enumeration value="ShippingAmt"></enumeration>
+			<enumeration value="EcomCAF"></enumeration>
+			<enumeration value="BAF"></enumeration>
+			<enumeration value="VAT"></enumeration>
+			<enumeration value="DownPmtAmt"></enumeration>
+			<enumeration value="TotalOrderAmt"></enumeration>
+			<enumeration value="TIPS"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="AcctTypeEnum">
+		<restriction base="string">
+			<enumeration value="DDA"></enumeration>
+			<enumeration value="SDA"></enumeration>
+			<enumeration value="CCA"></enumeration>
+			<enumeration value="CMA"></enumeration>
+			<enumeration value="SLR"></enumeration>
+			<enumeration value="Default"></enumeration>
+			<enumeration value="PAL"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="AcctCurEnum">
+		<restriction base="string">
+			<enumeration value="EGP"></enumeration>
+			<enumeration value="AED"></enumeration>
+			<enumeration value="BHD"></enumeration>
+			<enumeration value="CAD"></enumeration>
+			<enumeration value="EUR"></enumeration>
+			<enumeration value="GBP"></enumeration>
+			<enumeration value="JOD"></enumeration>
+			<enumeration value="KWD"></enumeration>
+			<enumeration value="LYD"></enumeration>
+			<enumeration value="QMR"></enumeration>
+			<enumeration value="QAR"></enumeration>
+			<enumeration value="SAR"></enumeration>
+			<enumeration value="USD"></enumeration>
+
+			<length value="3"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AcctCurOpenEnum">
+
+		<union memberTypes="tns:AcctCurEnum tns:AcctCurOpenEnumBaseType"></union>
+
+	</simpleType>
+
+	<simpleType name="CityEnum">
+		<restriction base="string">
+
+			<length value="50"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CityOpenEnum">
+		<union memberTypes="tns:CityEnum tns:CityOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="ContactStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="UNVERIFIED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContactStatusOpenEnum">
+
+		<union
+			memberTypes="tns:ContactStatusEnum tns:ContactStatusOpenEnumBaseType"></union>
+
+	</simpleType>
+
+
+	<simpleType name="CountryEnum">
+		<restriction base="string">
+
+			<length value="50"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CountryOpenEnum">
+		<union memberTypes="tns:CountryEnum tns:CountryOpenEnumBaseType"></union>
+	</simpleType>
+
+
+
+	<simpleType name="GovernorateEnum">
+		<restriction base="string">
+
+			<length value="50"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="GovernorateOpenEnum">
+
+		<union
+			memberTypes="tns:GovernorateEnum tns:GovernorateOpenEnumBaseType"></union>
+
+	</simpleType>
+
+
+	<simpleType name="AcctTypeOpenEnum">
+		<union
+			memberTypes="tns:AcctTypeEnum tns:AcctTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="DebitStatusOpenEnum">
+		<union
+			memberTypes="tns:DebitStatusEnum tns:DebitStatusOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="DebitStatusEnum">
+		<restriction base="string">
+			<enumeration value="Authorized"></enumeration>
+			<enumeration value="Rejected"></enumeration>
+
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="PaymentOptionEnum">
+		<restriction base="string">
+			<enumeration value="CashOnDelivery"></enumeration>
+			<enumeration value="PayAtFawry"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PaymentOptionOpenEnum">
+		<union
+			memberTypes="tns:PaymentOptionEnum tns:PaymentOptionEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="ShippingTypeEnum">
+		<restriction base="string">
+			<enumeration value="NoShipping"></enumeration>
+			<enumeration value="NormalShipping"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ShippingTypeOpenEnum">
+		<union
+			memberTypes="tns:ShippingTypeEnum tns:ShippingTypeEnumBaseType"></union>
+	</simpleType>
+
+
+
+	<simpleType name="TrxTypeEnum">
+		<restriction base="string">
+			<enumeration value="VOID"></enumeration>
+			<enumeration value="REFUND"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrxTypeOpenEnum">
+		<union memberTypes="tns:TrxTypeEnum tns:TrxTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="AuthMethodEnum">
+		<restriction base="string">
+			<enumeration value="PIN_ONLINE"></enumeration>
+			<enumeration value="PIN_OFFLINE"></enumeration>
+			<enumeration value="NO_PIN"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AuthMethodOpenEnum">
+		<union
+			memberTypes="tns:AuthMethodEnum tns:AuthMethodOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="TrxStatusEnum">
+		<restriction base="string">
+			<enumeration value="Success"></enumeration>
+			<enumeration value="Failed"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrxModeEnum">
+		<restriction base="string">
+			<enumeration value="Online"></enumeration>
+			<enumeration value="Offline"></enumeration>
+			<enumeration value="OfflineUnderLimit"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrxModeOpenEnum">
+		<union memberTypes="tns:TrxModeEnum tns:TrxModeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="TrxStatusOpenEnum">
+		<union
+			memberTypes="tns:TrxStatusEnum tns:TrxStatusOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="VouchStatusEnum">
+		<restriction base="string">
+			<enumeration value="VouchNew"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VouchStatusOpenEnum">
+		<union
+			memberTypes="tns:VouchStatusEnum tns:VouchStatusOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="RevReasonCodeEnum">
+		<restriction base="string">
+			<enumeration value="BillerNotAvailable"></enumeration>
+			<enumeration value="BillerRejected"></enumeration>
+			<enumeration value="BillerTimeOut"></enumeration>
+			<enumeration value="FawryTimeout"></enumeration>
+			<enumeration value="UNKOWN_REASON"></enumeration>
+			<enumeration value="DebitTimeOut"></enumeration>
+			<enumeration value="CANCELED"></enumeration>
+			<enumeration value="EXPIRED"></enumeration>
+
+			<maxLength value="64"></maxLength>
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RevReasonCodeOpenEnum">
+		<union
+			memberTypes="tns:RevReasonCodeEnum tns:RevReasonCodeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="PmtldTypeEnum">
+		<restriction base="string">
+			<enumeration value="FPTN"></enumeration>
+			<enumeration value="BLRPTN"></enumeration>
+			<enumeration value="BNKPTN"></enumeration>
+			<enumeration value="BNKDTN"></enumeration>
+			<enumeration value="FCRN"></enumeration>
+			<enumeration value="OBNKPTN"></enumeration>
+			<enumeration value="ASYNCUID"></enumeration>
+			<enumeration value="PTIN"></enumeration>
+			<enumeration value="OASYNCUID"></enumeration>
+			<enumeration value="OBLRPTN"></enumeration>
+			<enumeration value="OBNKDTN"></enumeration>
+			<enumeration value="OAUTHID"></enumeration>
+			<enumeration value="OFCRN"></enumeration>
+			<enumeration value="PDTN"></enumeration>
+			<enumeration value="CORRUID"></enumeration>
+			<enumeration value="NTN"></enumeration>
+			<enumeration value="CTSID"></enumeration>
+			<enumeration value="RQUID"></enumeration>
+			<enumeration value="LONID"></enumeration>
+			<enumeration value="CHAINUID"></enumeration>
+			<maxLength value="10"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LanguageEnum">
+		<restriction base="string">
+			<enumeration value="ar-eg"></enumeration>
+			<enumeration value="en-gb"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LanguageOpenEnum">
+		<union
+			memberTypes="tns:LanguageEnum tns:LanguageOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="EncryptionAlgorithmEnum">
+		<restriction base="string">
+			<enumeration value="DES"></enumeration>
+			<enumeration value="3DES"></enumeration>
+			<enumeration value="AES"></enumeration>
+			<enumeration value="RSA"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EncryptionAlgorithmOpenEnum">
+		<union
+			memberTypes="tns:EncryptionAlgorithmEnum tns:EncryptionAlgorithmOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="PmtStatusCodeEnum">
+		<restriction base="string">
+			<enumeration value="PmtTransf"></enumeration>
+			<enumeration value="PmtNotTransf"></enumeration>
+			<enumeration value="PmtAdviced"></enumeration>
+			<enumeration value="PmtNew"></enumeration>
+			<enumeration value="PmtNotified"></enumeration>
+			<enumeration value="PmtAdviceConfirmed"></enumeration>
+			<enumeration value="PmtNotificationRejected"></enumeration>
+			<enumeration value="PmtNotificationTimeout"></enumeration>
+			<enumeration value="PmtReversal"></enumeration>
+			<enumeration value="PmtAdviceTimeout"></enumeration>
+			<enumeration value="PmtAdviceFailed"></enumeration>
+			<enumeration value="PmtReversalFailed"></enumeration>
+			<enumeration value="PmtAdviceConfirmFailed"></enumeration>
+			<enumeration value="PmtRecon"></enumeration>
+			<enumeration value="PmtNotRecon"></enumeration>
+			<enumeration value="PmtDebit"></enumeration>
+			<enumeration value="PmtDebitFailed"></enumeration>
+			<enumeration value="PmtDebitTimeout"></enumeration>
+			<enumeration value="PmtReversalTimeout"></enumeration>
+			<enumeration value="PmtUnknownStatus"></enumeration>
+			<enumeration value="NotificationVague"></enumeration>
+			<enumeration value="PmtNotificationFailed"></enumeration>
+			<enumeration value="PmtRefundNew"></enumeration>
+			<enumeration value="ThreeDSSuccessed"></enumeration>
+			<enumeration value="AMLApproved"></enumeration>
+			<enumeration value="AMlReject"></enumeration>
+
+			<maxLength value="32"></maxLength>
+			<minLength value="1"></minLength>
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtTxnSearchCodeEnum">
+		<restriction base="string">
+			<enumeration value="SUCCESS"></enumeration>
+			<enumeration value="FAILED"></enumeration>
+			<enumeration value="FAIL"></enumeration>
+			<enumeration value="AUTHINITIATED"></enumeration>
+			<enumeration value="VAGUE"></enumeration>
+			<enumeration value="ALL"></enumeration>
+			<enumeration value="ALLWITHREV"></enumeration>
+			<enumeration value="REVERSEDPAY"></enumeration>
+			<enumeration value="REVERSETIMEOUT"></enumeration>
+			<enumeration value="REVERSEFAILED"></enumeration>
+			<enumeration value="CANCELED"></enumeration>
+			<enumeration value="EXPIRED"></enumeration>
+			<enumeration value="CORRELATED"></enumeration>
+			<enumeration value="INCOMPLETE"></enumeration>
+			<enumeration value="RETURNED"></enumeration>
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustLangPrefOpenEnum">
+		<union
+			memberTypes="tns:CustLangPrefEnum tns:CustLangPrefOpenEnumBaseType">
+			<simpleType>
+				<restriction base="string">
+					<maxLength value="17"></maxLength>
+				</restriction>
+			</simpleType>
+		</union>
+
+	</simpleType>
+
+	<simpleType name="CustLangPrefEnum">
+
+		<restriction base="string">
+			<enumeration value="ar-eg"></enumeration>
+			<enumeration value="en-gb"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="PmtMethodEnum">
+		<restriction base="string">
+			<enumeration value="CASH"></enumeration>
+			<enumeration value="CCARD"></enumeration>
+			<enumeration value="EFT"></enumeration>
+			<enumeration value="ACTDEB"></enumeration>
+			<enumeration value="MWALLET"></enumeration>
+			<enumeration value="COMMCARD"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtMethodOpenEnum">
+		<union
+			memberTypes="tns:PmtMethodEnum tns:PmtMethodOpenEnumBaseType">
+		</union>
+	</simpleType>
+
+	<simpleType name="AcctCurOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContactStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="50"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CityOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="50"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="GovernorateOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="50"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CountryOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="50"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AcctTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtMethodOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillSummAmtCodeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CurCodeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DimensionUnitOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="WeightUnitOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustLangPrefOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="17"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DebitStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DeliveryMethodOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="32"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OrderStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="128"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="BatchTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="128"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtSearchTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="32"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LanguageOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="17"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EncryptionAlgorithmOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="17"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustCategoryOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OfficialIdTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="12"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="TerminalStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="20"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ServiceTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AcctInputMethodOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="RevReasonCodeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrxStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="128"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrxModeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="128"></maxLength>
+			<minLength value="0"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VouchStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="128"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrxTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AuthMethodOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PaymentOptionEnumBaseType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ShippingTypeEnumBaseType">
+		<restriction base="string">
+			<maxLength value="64"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ProgramStatusOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="25"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ReconStatusCodeEnum">
+		<restriction base="string">
+			<enumeration value="Matched"></enumeration>
+			<enumeration value="Mismatched"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChksumTypeOpenEnum">
+		<union
+			memberTypes="tns:ChksumTypeEnum tns:ChksumTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+
+	<simpleType name="ChksumTypeEnum">
+		<restriction base="string">
+			<enumeration value="AdvSum"></enumeration>
+			<enumeration value="AdvNum"></enumeration>
+			<enumeration value="RevSum"></enumeration>
+			<enumeration value="RevNum"></enumeration>
+			<enumeration value="FawryComSum"></enumeration>
+			<enumeration value="BankComSum"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChksumTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="8"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TransStatusEnum">
+		<restriction base="string">
+			<enumeration value="Successful"></enumeration>
+			<enumeration value="Reversed"></enumeration>
+			<enumeration value="ReverseFailed"></enumeration>
+			<enumeration value="NeedReversal"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ReconPrcStatusEnum">
+		<restriction base="string">
+			<enumeration value="Reconciled"></enumeration>
+			<enumeration value="Failed"></enumeration>
+			<enumeration value="Partially-Reconciled"></enumeration>
+			<enumeration value="Un-Reconciled"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ReconAdditionalStatusEnum">
+		<restriction base="string">
+			<enumeration value="Need-Reverse"></enumeration>
+			<enumeration value="Need-Investigation"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TriggerTypeEnum">
+		<restriction base="string">
+			<enumeration value="StartupRs"></enumeration>
+			<enumeration value="ReconTotalsResultRs"></enumeration>
+			<enumeration value="StartupRq"></enumeration>
+			<enumeration value="ReconTotalsResultRq"></enumeration>
+			<enumeration value="Failed"></enumeration>
+			<enumeration value="ReconciliationSucceeded"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NationalityCodeOpenEnum">
+		<union
+			memberTypes="tns:NationalityCodeEnum tns:NationalityCodeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="NationalityCodeEnum">
+		<restriction base="string">
+			<enumeration value="EGY"></enumeration>
+			<enumeration value="ARE"></enumeration>
+			<enumeration value="BHR"></enumeration>
+			<enumeration value="CAN"></enumeration>
+			<enumeration value="GBR"></enumeration>
+			<enumeration value="JOR"></enumeration>
+			<enumeration value="KWT"></enumeration>
+			<enumeration value="LBY"></enumeration>
+			<enumeration value="OMN"></enumeration>
+			<enumeration value="QAT"></enumeration>
+			<enumeration value="SAU"></enumeration>
+			<enumeration value="USA"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="NationalityCodeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="32"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SOFCategoryOpenEnum">
+		<restriction base="string">
+			<enumeration value="BAC"></enumeration>
+			<enumeration value="CADV"></enumeration>
+			<enumeration value="WTR"></enumeration>
+			<enumeration value="ACH"></enumeration>
+			<enumeration value="PREP"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SOFStatusOpenEnum">
+		<restriction base="string">
+			<enumeration value="Active"></enumeration>
+			<enumeration value="Inactive"></enumeration>
+			<enumeration value="Suspended"></enumeration>
+			<enumeration value="AlreadyExist"></enumeration>
+			<enumeration value="PendingRandomPurchase"></enumeration>
+			<enumeration value="RandomPurchaseSucceeded"></enumeration>
+			<enumeration value="RandomPurchaseFailed"></enumeration>
+			<enumeration value="RandomPurchaseBlocked"></enumeration>
+			<enumeration value="ActivationFailed"></enumeration>
+			<enumeration value="ActivationBlocked"></enumeration>
+			<enumeration value="Deleted"></enumeration>
+			<enumeration value="Blocked"></enumeration>
+			<enumeration value="Expired"></enumeration>
+			<enumeration value="PendingThreeDS"></enumeration>
+			<enumeration value="ThreeDSecureVerFailed"></enumeration>
+			<enumeration value="ActiveNotifyOnly"></enumeration>
+			<enumeration value="Linked"></enumeration>
+			<enumeration value="LostStolen"></enumeration>
+			<enumeration value="Dormant"></enumeration>
+			<enumeration value="Freeze"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="OptTypeEnum">
+		<restriction base="string">
+			<enumeration value="Add"></enumeration>
+			<enumeration value="Update"></enumeration>
+			<enumeration value="UpdateAll"></enumeration>
+			<enumeration value="Cancel"></enumeration>
+			<enumeration value="AddOrUpdate"></enumeration>
+			<enumeration value="ResetVelCounters"></enumeration>
+			<enumeration value="ResetBalance"></enumeration>
+			<enumeration value="ResetLimit"></enumeration>
+			<enumeration value="Custom"></enumeration>
+			<enumeration value="AddToken"></enumeration>
+			<enumeration value="UpdateToken"></enumeration>
+			<enumeration value="CancelToken"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChangePinOptTypeEnum">
+		<restriction base="string">
+			<enumeration value="Set"></enumeration>
+			<enumeration value="Reset"></enumeration>
+			<enumeration value="Change"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChangePinOptTypeOpenEnum">
+		<union memberTypes="string tns:ChangePinOptTypeEnum" />
+	</simpleType>
+
+	<simpleType name="PmtRefireOptTypeEnum">
+		<restriction base="string">
+			<enumeration value="Count"></enumeration>
+			<enumeration value="Execute"></enumeration>
+			<enumeration value="PmtReversal"></enumeration>
+			<enumeration value="CheckStatus"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtAdvOptTypeEnum">
+		<restriction base="string">
+			<enumeration value="Execute"></enumeration>
+			<enumeration value="PmtReversal"></enumeration>
+			<enumeration value="CheckStatus"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="PmtAddOptTypeEnum">
+		<restriction base="string">
+			<enumeration value="PMTRemoteUpdate"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContactTypeOpenEnum">
+		<restriction base="string">
+			<enumeration value="WPHONE"></enumeration>
+			<enumeration value="HPHONE"></enumeration>
+			<enumeration value="MOBILE"></enumeration>
+			<enumeration value="EMAIL"></enumeration>
+			<enumeration value="ALTEMAIL"></enumeration>
+			<enumeration value="HADDRESS"></enumeration>
+			<enumeration value="WADDRESS"></enumeration>
+			<enumeration value="NOTIFYMOB"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AddressTypeEnum">
+		<restriction base="string">
+			<enumeration value="HADDRESS"></enumeration>
+			<enumeration value="WADDRESS"></enumeration>
+			<enumeration value="SHIPPINGADDRESS"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AddressTypeOpenEnum">
+		<union
+			memberTypes="tns:AddressTypeEnum tns:AddressTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="AddressTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="16"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="UnitOpenEnum">
+		<union memberTypes="string tns:UnitEnum"></union>
+	</simpleType>
+
+	<simpleType name="NotifyPointEnumBase">
+		<restriction base="string">
+			<enumeration value="SD"></enumeration>
+			<enumeration value="FD"></enumeration>
+			<enumeration value="BN"></enumeration>
+			<enumeration value="BC"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NotifyTypeOpenEnum">
+		<restriction base="string">
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NotifyMethodOpenEnum">
+		<restriction base="string">
+			<enumeration value="NONE"></enumeration>
+			<enumeration value="MBOX"></enumeration>
+			<enumeration value="EMAIL"></enumeration>
+			<enumeration value="SMS"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SearchTypeOpenEnum">
+		<restriction base="string">
+			<enumeration value="ENR"></enumeration>
+			<enumeration value="MND"></enumeration>
+			<enumeration value="ALL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustTypeOpenEnum">
+		<union memberTypes="string tns:CustTypeEnum"></union>
+	</simpleType>
+
+	<simpleType name="CustTypeEnum">
+		<restriction base="string">
+			<enumeration value="INDIVIDUAL" />
+			<enumeration value="CORPORATE" />
+			<enumeration value="MERCHANT" />
+			<enumeration value="FWMERCHANT" />
+			<enumeration value="ECOMMERCHANT" />
+			<enumeration value="BNK_CUSTOMER" />
+			<enumeration value="NON_BANK_CUSTOMER" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DashboardViewingTypeEnum">
+		<restriction base="string">
+			<enumeration value="CHART" />
+			<enumeration value="TABLE" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CustStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE" />
+			<enumeration value="INACTIVE" />
+			<enumeration value="INVALID" />
+			<enumeration value="UNREGISTERED" />
+			<enumeration value="DELETED" />
+			<enumeration value="PENDING" />
+			<enumeration value="APPROVED" />
+			<enumeration value="REJECTED" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SearchCriteriaOpenEnum">
+		<restriction base="string">
+			<enumeration value="GET" />
+			<enumeration value="SOF" />
+			<enumeration value="SEARCH" />
+			<enumeration value="Validate" />
+			<enumeration value="GET_GW" />
+			<enumeration value="GET_KYCED" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LookupTypeEnum">
+		<restriction base="string">
+
+			<enumeration value="BankAccountTypes" />
+			<enumeration value="BankAccountUsage" />
+			<enumeration value="BankAccountStatus" />
+			<enumeration value="BillAmountType" />
+			<enumeration value="BillerStatus" />
+			<enumeration value="BillStatus" />
+			<enumeration value="ChannelTypes" />
+			<enumeration value="Currencies" />
+			<enumeration value="CustomerOfficialTypes" />
+			<enumeration value="Languages" />
+			<enumeration value="MessageCodesLookup" />
+			<enumeration value="MessageVersionsLookup" />
+			<enumeration value="PaymentMethodsLookup" />
+			<enumeration value="PaymentRuleCategoriesLookup" />
+			<enumeration value="PAYMENT_TYPE" />
+			<enumeration value="PaymentStatus" />
+			<enumeration value="SERVICE_TYPE" />
+			<enumeration value="BatchElementStatus" />
+			<enumeration value="BatchElementType" />
+			<enumeration value="BatchElementsUsage" />
+			<enumeration value="BatchStatus" />
+			<enumeration value="BatchType" />
+			<enumeration value="SenderType" />
+			<enumeration value="LookupTypeStatus" />
+			<enumeration value="PaymentProcessModeLookup" />
+			<enumeration value="SeverityTypes" />
+			<enumeration value="SystemProcessTypes" />
+			<enumeration value="AccessRightType" />
+			<enumeration value="BillInstrucationStatus" />
+			<enumeration value="CustomerDetailType" />
+			<enumeration value="CustomerOfficialIdType" />
+			<enumeration value="CustomerStatus" />
+			<enumeration value="CustomerType" />
+			<enumeration value="CustomerContactType" />
+			<enumeration value="CustomerNotificationStatus" />
+			<enumeration value="EnrollmentStatus" />
+			<enumeration value="EnrollmentType" />
+			<enumeration value="IntervalUnit" />
+			<enumeration value="PaymentMandateType" />
+			<enumeration value="Nationality" />
+			<enumeration value="NotificationMethod" />
+			<enumeration value="NotificationPoint" />
+			<enumeration value="NotificationProperty" />
+			<enumeration value="NotificationReconStatus" />
+			<enumeration value="NotificationStatus" />
+			<enumeration value="PaymentMandateStatus" />
+			<enumeration value="PaymentInstructionStatus" />
+			<enumeration value="BillTypeRcStatusLookup" />
+			<enumeration value="Role" />
+			<enumeration value="Service" />
+			<enumeration value="ServiceAuthorizationLevel" />
+			<enumeration value="ServiceAuthorizationState" />
+			<enumeration value="ServiceAuthorizationStatus" />
+			<enumeration value="BankReconStatusLookup" />
+			<enumeration value="MismatchReasonLookup" />
+			<enumeration value="RequieredActionLookup" />
+			<enumeration value="TrxRcStatusLookup" />
+			<enumeration value="BtTotalsStatusLookup" />
+			<enumeration value="RecoveryStatusLookup" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SearchModeOpenEnum">
+		<restriction base="string">
+			<enumeration value="REGISTERED" />
+			<enumeration value="UNREGISTERED" />
+			<enumeration value="ALL" />
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="LookupStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LookupStatusOpenEnum">
+		<union memberTypes="string tns:LookupStatusEnum"></union>
+	</simpleType>
+
+	<simpleType name="CategoryStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CategoryStatusOpenEnum">
+		<union memberTypes="string tns:CategoryStatusEnum"></union>
+	</simpleType>
+
+
+	<simpleType name="SchemeStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SchemeStatusOpenEnum">
+		<union memberTypes="string tns:SchemeStatusEnum"></union>
+	</simpleType>
+
+
+	<simpleType name="SchemeParmCardinalityEnum">
+		<restriction base="string">
+			<enumeration value="OPT"></enumeration>
+			<enumeration value="REQ"></enumeration>
+			<enumeration value="REQWS"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SchemeParmCardinalityOpenEnum">
+		<union memberTypes="string tns:SchemeParmCardinalityEnum"></union>
+	</simpleType>
+
+
+	<simpleType name="SchemeParmSecurityModeEnum">
+		<restriction base="string">
+			<enumeration value="P"></enumeration>
+			<enumeration value="M"></enumeration>
+			<enumeration value="E"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SchemeParmSecurityModeOpenEnum">
+		<union memberTypes="string tns:SchemeParmSecurityModeEnum"></union>
+	</simpleType>
+
+
+
+	<simpleType name="AcctTypeStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AcctTypeStatusOpenEnum">
+		<union memberTypes="string tns:AcctTypeStatusEnum"></union>
+	</simpleType>
+
+	<simpleType name="ActivationMethodStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ActivationMethodStatusOpenEnum">
+		<union memberTypes="string tns:ActivationMethodStatusEnum"></union>
+	</simpleType>
+
+
+	<simpleType name="EStatementFetchTypeEnum">
+		<restriction base="string">
+			<enumeration value="REG"></enumeration>
+			<enumeration value="EXT"></enumeration>
+			<enumeration value="ALL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EStatementFetchTypeOpenEnum">
+		<union memberTypes="string tns:EStatementFetchTypeEnum"></union>
+	</simpleType>
+
+
+
+	<simpleType name="LookupTypeOpenEnum">
+		<union memberTypes="string tns:LookupTypeEnum"></union>
+	</simpleType>
+
+	<simpleType name="BillTypeStatusEnum">
+		<restriction base="string">
+			<enumeration value="Available"></enumeration>
+			<enumeration value="AvailPend"></enumeration>
+			<enumeration value="Deleted"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillTypeStatusOpenEnum">
+		<union memberTypes="string  tns:BillTypeStatusEnum"></union>
+	</simpleType>
+
+
+	<simpleType name="BillTypeTypeOpenEnum">
+		<union memberTypes="string  tns:BillTypeTypeEnum"></union>
+	</simpleType>
+
+	<simpleType name="BillTypeTypeEnum">
+		<restriction base="string">
+			<enumeration value="PROMO"></enumeration>
+			<enumeration value="FIXED"></enumeration>
+			<enumeration value="VARIABLE"></enumeration>
+			<enumeration value="REG"></enumeration>
+			<enumeration value="BILLPMT"></enumeration>
+			<enumeration value="KYCONLY"></enumeration>
+			<enumeration value="KYCAndPMT"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillingCycleStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillingCycleStatusOpenEnum">
+		<union memberTypes="string  tns:BillingCycleStatusEnum"></union>
+	</simpleType>
+
+	<simpleType name="UnitEnum">
+		<restriction base="string">
+			<enumeration value="HOUR"></enumeration>
+			<enumeration value="DAY"></enumeration>
+			<enumeration value="MONTH"></enumeration>
+			<enumeration value="YEAR"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EnrStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BatchTypesOpenEnum">
+		<union
+			memberTypes="tns:BatchTypesEnum tns:BatchTypesOpenEnumBaseType" />
+
+	</simpleType>
+
+	<simpleType name="BatchTypesEnum">
+		<restriction base="string">
+			<enumeration value="BillInquiryRq" />
+			<enumeration value="PayNotificationRq" />
+			<enumeration value="PayAdviceRq" />
+			<enumeration value="CustomerRq " />
+			<enumeration value="EnrollementsRq" />
+			<enumeration value="PaymentMandatesRq" />
+			<enumeration value="BillInstructionsRq" />
+			<enumeration value="PaymentInstructionsRq" />
+			<enumeration value="DebitAddRq" />
+			<enumeration value="DebitRevRq" />
+
+			<enumeration value="BillInquiryRs" />
+			<enumeration value="PayNotificationRs" />
+			<enumeration value="PayAdviceRs" />
+			<enumeration value="CustomerRs" />
+			<enumeration value="EnrollementsRs" />
+			<enumeration value="PaymentMandatesRs" />
+			<enumeration value="BillInstructionsRs" />
+			<enumeration value="PaymentInstructionsRs" />
+			<enumeration value="DebitAddRs" />
+			<enumeration value="DebitRevRs" />
+
+
+
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BatchTypesOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="32" />
+			<minLength value="1" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MandateTypeEnumType">
+		<restriction base="string">
+			<enumeration value="ANONYMOUS" />
+			<enumeration value="RECUR" />
+			<enumeration value="NONRECUR" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MandateTypeOpenEnum">
+		<union memberTypes="tns:MandateTypeEnumType" />
+	</simpleType>
+
+	<simpleType name="MandateStatusOpenEnumBaseType">
+		<restriction base="string">
+			<enumeration value="ACTIVE" />
+			<enumeration value="INACTIVE" />
+			<enumeration value="DELETED" />
+			<enumeration value="REJECTED" />
+			<enumeration value="EDIT" />
+			<enumeration value="RCIEVED" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MandateStatusOpenEnum">
+		<union memberTypes="tns:MandateStatusOpenEnumBaseType" />
+	</simpleType>
+
+	<simpleType name="EnrTypeOpenEnumBaseType">
+		<restriction base="string">
+			<enumeration value="ANONYMOUS" />
+			<enumeration value="RECUR" />
+			<enumeration value="NONRECUR" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EnrTypeOpenEnum">
+		<union memberTypes="tns:EnrTypeOpenEnumBaseType string" />
+	</simpleType>
+
+	<simpleType name="PmtAmtIndicatorEnum">
+		<restriction base="string">
+			<enumeration value="LSTHN"></enumeration>
+			<enumeration value="GTRTHN"></enumeration>
+			<enumeration value="EQUAL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtAmtIndicatorOpenEnum">
+		<union memberTypes="tns:PmtAmtIndicatorEnum string"></union>
+	</simpleType>
+
+
+
+	<simpleType name="CateoryCodeEnumBase">
+		<restriction base="string">
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CateoryCodeEnum">
+		<union memberTypes="tns:CateoryCodeEnumBase" />
+	</simpleType>
+
+	<simpleType name="NotificationPointCodeOpenEnum">
+		<union memberTypes="tns:NotifyPointEnumBase string" />
+	</simpleType>
+
+	<simpleType name="notifyPropCodeEnumBase">
+		<restriction base="string">
+		</restriction>
+	</simpleType>
+
+	<simpleType name="notifyPropCodeOpenEnum">
+		<union memberTypes="tns:notifyPropCodeEnumBase" />
+	</simpleType>
+
+	<simpleType name="notificationMethodEnum">
+		<restriction base="string">
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SubscriptionStatusEnum">
+		<restriction base="string">
+			<enumeration value="ACTIVE"></enumeration>
+			<enumeration value="INACTIVE"></enumeration>
+			<enumeration value="DELETED"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="notificationCodeEnumBase">
+		<restriction base="string">
+		</restriction>
+	</simpleType>
+
+	<simpleType name="notificationCodeEnum">
+		<union memberTypes="tns:notificationCodeEnumBase" />
+	</simpleType>
+
+	<simpleType name="ExtraBillingAcctKeyTypeOpenEnum">
+		<union
+			memberTypes="tns:ExtraBillingAcctKeyTypeEnum tns:ExtraBillingAcctKeyTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="ExtraBillingAcctKeyTypeEnum">
+		<restriction base="string">
+			<enumeration value="Key1"></enumeration>
+			<enumeration value="Key2"></enumeration>
+			<enumeration value="Key3"></enumeration>
+			<enumeration value="Key4"></enumeration>
+			<enumeration value="Key5"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ExtraBillingAcctKeyTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="36"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="VouchKeyTypeOpenEnum">
+		<union
+			memberTypes="tns:VouchKeyTypeEnum tns:VouchKeyTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="VouchKeyTypeEnum">
+		<restriction base="string">
+			<enumeration value="Key1"></enumeration>
+			<enumeration value="Key2"></enumeration>
+			<enumeration value="Key3"></enumeration>
+			<enumeration value="Key4"></enumeration>
+			<enumeration value="Key5"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="VouchKeyTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="36"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ClearingTermEnum">
+		<restriction base="string">
+			<enumeration value="Instant"></enumeration>
+			<enumeration value="TrxDate"></enumeration>
+			<enumeration value="BnkClearingDate"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="ClearingTermOpenEnum">
+		<union memberTypes="tns:ClearingTermEnum string" />
+	</simpleType>
+
+
+	<simpleType name="ProductTypeOpenEnum">
+		<union memberTypes="tns:ProductTypeOpenEnumBaseType"></union>
+	</simpleType>
+
+	<simpleType name="ProductTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="100"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtInstStatus">
+		<restriction base="string">
+			<enumeration value="SUCCESS"></enumeration>
+			<enumeration value="PENDING"></enumeration>
+			<enumeration value="FAIL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtInstStatusOpenEnum">
+		<union memberTypes="tns:PmtInstStatus" />
+	</simpleType>
+
+	<simpleType name="BillInstStatus">
+		<restriction base="string">
+			<enumeration value="SUCCESS"></enumeration>
+			<enumeration value="INPROGRESS"></enumeration>
+			<enumeration value="FAIL"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillInstStatusOpenEnum">
+		<union memberTypes="tns:BillInstStatus" />
+	</simpleType>
+
+	<simpleType name="PmtInstNature">
+		<restriction base="string">
+			<enumeration value="MANUAL"></enumeration>
+			<enumeration value="SCHEDULED"></enumeration>
+			<enumeration value="AUTOMATIC"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtInstNatureOpenEnum">
+		<union memberTypes="tns:PmtInstNature" />
+	</simpleType>
+
+	<simpleType name="EnrSearchType">
+		<restriction base="string">
+			<enumeration value="ALL" />
+			<enumeration value="ANONYMOUS" />
+			<enumeration value="AUTOMATIC" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="EnrSearchTypeOpenEnum">
+		<union memberTypes="tns:EnrSearchType" />
+	</simpleType>
+
+	<simpleType name="CreditCardStatusOpenEnum">
+		<union
+			memberTypes="tns:CreditCardStatusEnum tns:CreditCardStatusBaseEnum"></union>
+	</simpleType>
+
+	<simpleType name="CreditCardStatusEnum">
+		<restriction base="string">
+			<enumeration value="Active"></enumeration>
+			<enumeration value="Blocked"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CreditCardStatusBaseEnum">
+		<restriction base="string">
+			<maxLength value="32"></maxLength>
+		</restriction>
+	</simpleType>
+	<simpleType name="PmtNatureBaseEnum">
+		<restriction base="string">
+			<enumeration value="PMT"></enumeration>
+			<enumeration value="REV"></enumeration>
+			<enumeration value="PMTREV"></enumeration>
+			<enumeration value="PMTINIT"></enumeration>
+			<enumeration value="PMTQRY"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PmtNatureOpenEnum">
+		<union memberTypes="tns:PmtNatureBaseEnum string" />
+	</simpleType>
+
+	<simpleType name="MartialStatusBaseEnum">
+		<restriction base="string">
+			<enumeration value="Married"></enumeration>
+			<enumeration value="Single"></enumeration>
+			<enumeration value="Divorced"></enumeration>
+			<enumeration value="Widowed"></enumeration>
+			<enumeration value="Separated"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MartialStatusOpenEnum">
+		<union memberTypes="tns:MartialStatusBaseEnum string" />
+	</simpleType>
+
+
+	<simpleType name="BillTypeNatureBaseEnum">
+		<restriction base="string">
+			<enumeration value="CASHOUT_INQ"></enumeration>
+			<enumeration value="CASHOUT_CORR"></enumeration>
+			<enumeration value="PMT"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BillTypeNatureOpenEnum">
+		<union memberTypes="tns:BillTypeNatureBaseEnum string" />
+	</simpleType>
+
+	<simpleType name="TimeoutHandlingBaseEnum">
+		<restriction base="string">
+			<enumeration value="SRETRY"></enumeration>
+			<enumeration value="FRETRY"></enumeration>
+			<enumeration value="REV"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TimeoutHandlingOpenEnum">
+		<union memberTypes="tns:TimeoutHandlingBaseEnum string" />
+	</simpleType>
+
+	<simpleType name="AppTypeEnum">
+		<restriction base="string">
+
+		</restriction>
+	</simpleType>
+	<simpleType name="AppTypeOpenEnum">
+		<union memberTypes="tns:AppTypeEnum string" />
+	</simpleType>
+
+
+	<simpleType name="MsgTypeEnum">
+		<restriction base="string">
+			<enumeration value="Info"></enumeration>
+			<enumeration value="Warring"></enumeration>
+			<enumeration value="Forced"></enumeration>
+			<enumeration value="Promotion"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="MsgTypeOpenEnum">
+		<union memberTypes="tns:MsgTypeEnum string" />
+	</simpleType>
+
+	<simpleType name="MsgStatusTypeEnum">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="MsgStatusTypeOpenEnum">
+		<union memberTypes="tns:MsgStatusTypeEnum string" />
+	</simpleType>
+
+	<simpleType name="MngInboxOptType">
+		<restriction base="string">
+			<enumeration value="Add"></enumeration>
+			<enumeration value="Update"></enumeration>
+			<enumeration value="Add_Recipient"></enumeration>
+			<enumeration value="Update_Recipient"></enumeration>
+			<enumeration value="Remove_Recipient"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="AcctParametersTypeEnum">
+		<restriction base="string"></restriction>
+	</simpleType>
+	<simpleType name="AcctParametersTypeOpenEnum">
+		<union memberTypes="tns:AcctParametersTypeEnum string" />
+	</simpleType>
+
+	<simpleType name="SvcTypeEnum">
+		<restriction base="string">
+			<enumeration value="PmtAdd"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SvcTypeOpenEnum">
+		<union memberTypes="tns:SvcTypeEnum string" />
+	</simpleType>
+
+	<simpleType name="DebitOptTypeEnum">
+		<restriction base="string">
+			<enumeration value="Initiate"></enumeration>
+			<enumeration value="Update"></enumeration>
+			<enumeration value="DebitAltAcct"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="KYCLevelEnum">
+		<restriction base="string">
+
+		</restriction>
+	</simpleType>
+
+	<simpleType name="KYCLevelOpenEnum">
+		<union memberTypes="string tns:KYCLevelEnum"></union>
+	</simpleType>
+
+	<simpleType name="ActivatonCriteriaOpenEnum">
+		<union memberTypes="tns:ActivatonCriteriaEnum string" />
+	</simpleType>
+
+	<simpleType name="ActivatonCriteriaEnum">
+		<restriction base="string">
+			<enumeration value="Amt"></enumeration>
+			<enumeration value="Code"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CycleIntervalUnitEnum">
+		<restriction base="string">
+			<enumeration value="WEEKLY"></enumeration>
+			<enumeration value="BIWEEKLY"></enumeration>
+			<enumeration value="MONTHLY"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="ReverseReasonEnum">
+		<restriction base="string">
+			<enumeration value="CANCELED"></enumeration>
+			<enumeration value="EXPIRED"></enumeration>
+
+			<maxLength value="32"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CodeTypeEnum">
+		<restriction base="string">
+			<enumeration value="QR"></enumeration>
+			<enumeration value="BAR"></enumeration>
+			<enumeration value="PDF417"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="SubscriptionTypeOpenEnum">
+		<union
+			memberTypes="tns:SubscriptionTypeEnum tns:SubscriptionTypeOpenEnumBaseType"/>
+	</simpleType>
+	
+	<simpleType name="SubscriptionTypeEnum">
+		<restriction base="string">
+			<enumeration value="FCARD"></enumeration>
+			<enumeration value="MMF"></enumeration>
+			<enumeration value="BNPL"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="SubscriptionTypeOpenEnumBaseType">
+		<restriction base="string">
+			<maxLength value="40"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="EnrollmentTypeOpenEnum">
+		<restriction base="string">
+            <maxLength value="50"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="TokenStatusOpenEnum">
+		<restriction base="string">
+            <maxLength value="50"></maxLength>
+			<minLength value="1"></minLength>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="WhereToUseEnum">
+		<restriction base="string">
+			<enumeration value="IN_STORE"></enumeration>
+			<enumeration value="ONLINE"></enumeration>
+			<enumeration value="BOTH"></enumeration>
+		</restriction>
+	</simpleType>
+	
+</schema>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+
+
+	<complexType name="PmtReFireRqType">
+		<sequence>
+			<element name="PmtReFireInfo" type="tns:PmtReFireInfoType"
+				minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="PmtReFireRsType">
+		<sequence>
+			<element name="PmtReFireResults" type="tns:PmtReFireResultsType"
+				minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtReFireInfoType">
+		<sequence>
+			<element name="OptType" minOccurs="1" maxOccurs="1"
+				type="tns:PmtRefireOptTypeEnum">
+			</element>
+
+			<element name="CSPs" minOccurs="0" type="tns:CSPListType">
+			</element>
+
+			<element name="BillerId" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type">
+			</element>
+
+			<element name="BillTypes" type="tns:BillTypesType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="IncludeFiredBefore" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="ErrorCodes" type="tns:ErrorCodesType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="FromDate" type="dateTime" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="ToDate" type="dateTime" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			
+
+			<element name="PmtAmountRange" type="tns:PmtAmountRangeType"
+				minOccurs="0" maxOccurs="1"></element>
+			
+			<element name="PmtStatusCodesList" type="tns:PmtStatusCodesListType"
+				minOccurs="0" maxOccurs="1"></element>
+				
+			<choice minOccurs="0" maxOccurs="1">
+				<element name="CustomerReferenceNoRange" type="tns:CustomerReferenceNoRangeType"
+					minOccurs="0" maxOccurs="1">
+				</element>
+			
+				<element name="PmtFCRNList" type="tns:PmtFCRNListType"
+					minOccurs="0" maxOccurs="1">
+				</element>
+			</choice>			
+		</sequence>
+	</complexType>
+
+	<complexType name="CustomerReferenceNoRangeType">
+		<sequence>
+			<element name="From" type="long" minOccurs="1" maxOccurs="1">
+			</element>
+
+			<element name="To" type="long" minOccurs="1" maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtAmountRangeType">
+		<sequence>
+			<element name="From" type="double" minOccurs="1" maxOccurs="1">
+			</element>
+
+			<element name="To" type="double" minOccurs="1" maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtStatusCodesListType">
+		<sequence>
+			<element name="PmtStatusCode" type="tns:PmtStatusCodeEnum" minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtReFireResultsType">
+		<sequence>
+			<element name="PmtReFireInfo" type="tns:PmtReFireInfoType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="PmtsCount" type="long" minOccurs="1"
+				maxOccurs="1">
+			</element>
+			<element name="PmtsTotalCount" type="long" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="ErrorCodesType">
+		<sequence>
+			<element name="ErrorCode" minOccurs="1" maxOccurs="unbounded">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="12"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+	
+	<complexType name="PmtFCRNListType">
+		<sequence>
+			<element name="PmtFCRN" minOccurs="1" maxOccurs="unbounded">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="CSPListType">
+		<sequence>
+			<element name="CSP" minOccurs="1" maxOccurs="unbounded"
+				type="tns:Identifier_Type">
+			</element>
+
+		</sequence>
+	</complexType>
+
+</schema>

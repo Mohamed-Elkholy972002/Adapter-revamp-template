@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	
+	<complexType name="LookupRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1" />
+			<element name="FetchAll" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="LookupTypes" minOccurs="0" maxOccurs="1"
+				type="tns:LookupTypesType" />
+			<element name="LookupField" minOccurs="0" maxOccurs="1"
+				type="tns:LookupFieldType" />
+			<element name="CustIds" type="tns:CustIdsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="LookupTypesType">
+		<sequence>
+			<element name="LookupType" minOccurs="1" maxOccurs="unbounded" type="tns:LookupTypeOpenEnum" />
+		</sequence>
+	</complexType>
+
+	<complexType name="LookupFieldType">
+		<sequence>
+			<element name="LookupType" minOccurs="1" maxOccurs="1" type="tns:LookupTypeOpenEnum" />
+			<element name="LookupCode" minOccurs="0" maxOccurs="1" type="tns:LookupCodeType" />
+		</sequence>
+	</complexType>	
+
+	<simpleType name="LookupCodeType">
+ 		<restriction base="string">
+			<maxLength value="20"></maxLength>
+		</restriction>
+ 	</simpleType>
+ 	
+ 	<complexType name="LookupRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType" minOccurs="0" maxOccurs="1"/>
+			<element name="LookupsInfo" minOccurs="1" maxOccurs="1" type="tns:LookupsInfoType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="LookupsInfoType">
+		<sequence>
+			<element name="LookupInfo" minOccurs="0" maxOccurs="unbounded" type="tns:LookupInfoType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="LookupInfoType">
+		<sequence>
+			<element name="LookupType" minOccurs="0" maxOccurs="1"
+				type="tns:LookupTypeOpenEnum" />
+			<element name="LookupCode" minOccurs="0" maxOccurs="1"
+				type="tns:LookupCodeType" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:NamePrimLangType" />
+			<element name="NameSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:NameSecLangType" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:DescPrimLangType" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:DescSecLangType" />
+			<element name="IsDefault" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="LookupStatus" minOccurs="0" maxOccurs="1"
+				type="tns:LookupStatusOpenEnum" />
+			<element name="CustomProperties"
+				type="tns:CustomPropertiesType" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="LookupExtraDetails" type="tns:LookupExtraDetailsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	<simpleType name="NamePrimLangType">
+ 		<restriction base="string">
+			<maxLength value="40"></maxLength>
+		</restriction>
+ 	</simpleType>
+ 	
+ 	<simpleType name="NameSecLangType">
+ 		<restriction base="string">
+			<maxLength value="160"></maxLength>
+		</restriction>
+ 	</simpleType>
+ 	
+ 	<simpleType name="DescPrimLangType">
+ 		<restriction base="string">
+			<maxLength value="80"></maxLength>
+		</restriction>
+ 	</simpleType>
+ 	
+ 	<simpleType name="DescSecLangType">
+ 		<restriction base="string">
+			<maxLength value="320"></maxLength>
+		</restriction>
+ 	</simpleType>
+
+ 	<complexType name="LookupExtraDetailsType">
+ 		<sequence>
+ 			<element name="LookupDetails" type="tns:LookupDetailsType" maxOccurs="unbounded" minOccurs="0"></element>
+ 		</sequence>
+ 	</complexType>
+
+ 	<complexType name="LookupDetailsType">
+ 		<sequence>
+ 			<element name="MerchantName" type="string"></element>
+ 		</sequence>
+ 	</complexType>
+</schema>

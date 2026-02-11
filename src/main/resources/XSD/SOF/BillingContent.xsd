@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	 <include schemaLocation="CoreLib.xsd"></include>
+
+
+
+	<complexType name="BillInqRqType">
+		<sequence>
+			<element name="EnrollmentUID" type="tns:NC36_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="SelRangeDt" type="tns:SelRangeDtType"
+				minOccurs="0">
+			</element>
+			<element name="IncOpenAmt" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="BillNumber" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="64"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BillingAcct" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="ExtraBillingAcctKeys"
+				type="tns:ExtraBillingAcctKeysType" minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="BillerId" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type">
+			</element>
+			<element name="BankId" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type">
+			</element>
+			<element name="PmtType" type="tns:PmtTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="BillTypeCode" type="long" minOccurs="0"></element>
+
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" minOccurs="1" maxOccurs="1">
+			</element>
+
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="InputMethod" type="tns:AcctInputMethodOpenEnum" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SelRangeDtType">
+		<sequence>
+			<element name="StartDt" type="dateTime" minOccurs="0"></element>
+			<element name="EndDt" type="dateTime" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+ 	<complexType name="BillInqRsType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+            <element name="SelRangeDt" type="tns:SelRangeDtType"
+				minOccurs="0">
+			</element>
+
+
+
+
+            <element name="IncOpenAmt" type="boolean" minOccurs="0" maxOccurs="1"></element>
+            <element name="PmtType" type="tns:PmtTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="BillRec" type="tns:BillRecType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+ 	</complexType>
+
+
+
+</schema>

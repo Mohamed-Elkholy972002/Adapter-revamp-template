@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+<include schemaLocation="CoreLib.xsd"></include>
+	<complexType name="BillTypeRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+            <element name="ServiceType" type="tns:ServiceTypeOpenEnum" minOccurs="0" maxOccurs="1">
+			</element>
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1"></element>
+            <element name="FetchAll" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="BillTypeCodes" minOccurs="0" maxOccurs="1"
+				type="tns:BillTypeCodesType" />
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="BillTypeRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+            <element name="ServiceType" type="tns:ServiceTypeOpenEnum" minOccurs="0" maxOccurs="1">
+			</element>
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1"></element>
+            <element name="BillTypesInfo" minOccurs="1" maxOccurs="1"
+				type="tns:BillTypesInfoType" />
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="BillTypesInfoType">
+		<sequence>
+			<element name="BillTypeInfo" minOccurs="0" maxOccurs="unbounded" type="tns:BillTypeInfoType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="BillTypeInfoType">
+		<sequence>
+			<element name="BillTypeCode" minOccurs="1" maxOccurs="1"
+				type="long" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="DescPrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="AcctLblPrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="AcctLblSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="BillTypeStatus"
+				type="tns:BillTypeStatusOpenEnum" minOccurs="1" maxOccurs="1">
+			</element>
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="0" maxOccurs="1" />
+			<element name="PmtType" type="tns:PmtTypeOpenEnum"
+				minOccurs="1" maxOccurs="1" />
+			<element name="BillerId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="BillingFreq" minOccurs="0" maxOccurs="1"
+				type="tns:BillingFreqType" />
+			<element name="BillingCycles" minOccurs="0" maxOccurs="1"
+				type="tns:BillingCyclesType" />
+			<element name="RuleAwarPrimLang" type="tns:RuleAwarenessType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="RuleAwarSecLang" type="tns:RuleAwarenessType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="BillTypeExtraRefKeys" type="tns:BTypeExtraRefKeysType" maxOccurs="1" minOccurs="0"></element>
+			<element name="PaymentRange" type="tns:PaymentRangeType"
+				minOccurs="0" maxOccurs="unbounded"/>
+			<element name="isPartialSupport" type="boolean"
+				minOccurs="0" maxOccurs="1"/>
+			<element name="isAdvanceSupport" type="boolean"
+				minOccurs="0" maxOccurs="1"/>
+			<element name="isCreditCardSupport" type="boolean"
+				minOccurs="0" maxOccurs="1"/>	
+			<element name="FeesInfo" type="tns:FeesInfoType"
+				minOccurs="0" maxOccurs="1"/>
+			<element name="AcctTypeProfileCodes" type="tns:AcctTypeProfileCodeListType" maxOccurs="1"
+				minOccurs="0"/>											
+		</sequence>
+	</complexType>
+	
+	<complexType name="AcctTypeProfileCodeListType">
+		<sequence>
+			<element name="AcctTypeProfileCode" minOccurs="1" maxOccurs="unbounded" type="tns:Identifier_Type"/>
+		</sequence>
+	</complexType>
+	
+
+	<simpleType name="RuleAwarenessType">
+		<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+	</simpleType>
+	
+	<complexType name="BTypeExtraRefKeysType">
+			<sequence>
+				<element name="BillTypeRefKey" type="tns:BTypeRefKeyType"
+					minOccurs="1" maxOccurs="unbounded"></element>
+			</sequence>
+	</complexType>
+		
+	<complexType name="BTypeRefKeyType">
+		<sequence>
+			
+			<element name="Key" minOccurs="1" maxOccurs="1"
+					type="tns:ExtraBillingAcctKeyTypeOpenEnum">
+			</element>
+			
+			<element name="AcctKeyLblPrimLang" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="80"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+						
+			<element name="AcctKeyLblSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+		</sequence>
+	</complexType>
+</schema>

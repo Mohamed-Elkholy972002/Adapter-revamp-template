@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	targetNamespace="http://www.fawry.com.eg/configuration"
+	elementFormDefault="qualified"
+	xmlns:tns="http://www.fawry.com.eg/configuration"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="resourcesConfiguration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="xmlResource" type="tns:XMLResourceConfiguration"
+					minOccurs="0" maxOccurs="unbounded" />
+					
+			    <xs:element name="scehmaDatabaseResource" type="tns:SchemaDataBaseResourceConfiguration"
+					minOccurs="0" maxOccurs="unbounded" />
+
+				<xs:element name="propertiesFileResource"
+					type="tns:PropertiesFileResourceConfiguration" minOccurs="0"
+					maxOccurs="unbounded" />
+
+				<xs:element name="databasePropertiesResource"
+					type="tns:DatabasePropertiesResourceConfiguration" minOccurs="0"
+					maxOccurs="unbounded" />
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="FileSource">
+		<xs:sequence>
+			<xs:element name="file" type="xs:string" />
+			<xs:element name="pathType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ClassPath"></xs:enumeration>
+						<xs:enumeration value="File"></xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Locale">
+		<xs:sequence>
+			<xs:element name="language">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="en"></xs:enumeration>
+						<xs:enumeration value="ar"></xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="country" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ResourceConfiguration">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XMLResourceConfiguration">
+		<xs:complexContent>
+			<xs:extension base="tns:ResourceConfiguration">
+				<xs:sequence>
+					<xs:element name="fileSource" type="tns:FileSource" />
+					<xs:element name="xsdSchema" type="xs:string" />
+					<xs:element name="JAXBPackage" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="PropertiesFileResourceConfiguration">
+		<xs:complexContent>
+			<xs:extension base="tns:ResourceConfiguration">
+				<xs:sequence>
+					<xs:element name="fileSource" type="tns:FileSource" />
+					<xs:element name="local" type="tns:Locale" maxOccurs="2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DatabasePropertiesResourceConfiguration">
+		<xs:complexContent>
+			<xs:extension base="tns:ResourceConfiguration">
+				<xs:sequence>
+					<xs:element name="Category" type="xs:string" />
+					<xs:element name="local" type="tns:Locale" maxOccurs="2"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="SchemaDataBaseResourceConfiguration">
+		<xs:complexContent>
+			<xs:extension base="tns:ResourceConfiguration">
+				<xs:sequence>
+				    <xs:element name="persistenceUnitName" type="xs:string" />
+				    <xs:element name="entityName" type="xs:string" />
+					<xs:element name="entityKeyColumnName" type="xs:string" />									
+					<xs:element name="entitiyKeyColumnNameType" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

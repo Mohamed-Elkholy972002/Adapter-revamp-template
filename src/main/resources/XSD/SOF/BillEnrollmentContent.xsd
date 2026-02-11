@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	
+	<complexType name="BillEnrRqType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1" />
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" minOccurs="0" maxOccurs="1" />
+			<element name="FawryCustNumber" minOccurs="0" maxOccurs="1" type="tns:FawryCustNumberType" />
+			<element name="EnrDataRecs" type="tns:EnrDataRecsType" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+ 	
+ 	<complexType name="EnrDataRqType">
+ 		<sequence>
+ 			<element name="OptType" minOccurs="1" maxOccurs="1" type="tns:OptTypeEnum"/>
+ 			<element name="EnrType" minOccurs="0" maxOccurs="1" type="tns:EnrTypeOpenEnum"/>
+ 			<element name="BillerId" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type"/>
+ 			<element name="BillTypeCode" type="long" minOccurs="1" maxOccurs="1"/>
+ 			<element name="PmtType" type="tns:PmtTypeOpenEnum" minOccurs="0" maxOccurs="1"/>
+ 			<element name="BillingAcct" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ExtraBillingAcctKeys" type="tns:ExtraBillingAcctKeysType" minOccurs="0" maxOccurs="1">
+			</element>		
+			<element name="StrDate" type="date" minOccurs="0" maxOccurs="1"/>
+			<element name="Alias" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BillingCycleCode" minOccurs="0" maxOccurs="1" type="tns:BillingCycleCodeType"/>
+            <element name="EnrStatus" minOccurs="0" maxOccurs="1" type="tns:EnrStatusEnum" />
+            <element name="DeactivationReason" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+ 						<maxLength value="256"/>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+            <element name="EnrUID" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type" />
+            
+            <element name="NotifyMobile" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+        </sequence>
+ 	</complexType>
+
+ 	
+ 	<complexType name="BillEnrRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType" minOccurs="0" maxOccurs="1" />
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1" />
+			<element name="FawryCustNumber" minOccurs="0" maxOccurs="1" type="tns:FawryCustNumberType" />
+			<element name="EnrDataRsRecs" type="tns:EnrDataRsRecsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+  	<complexType name="EnrDataRsType">
+ 		<sequence>
+ 			<element name="OptType" minOccurs="0" maxOccurs="1"
+ 				type="tns:OptTypeEnum" />
+ 			<element name="EnrType" minOccurs="0" maxOccurs="1"
+ 				type="tns:EnrTypeOpenEnum" />
+ 			<element name="BillerId" minOccurs="0" maxOccurs="1"
+ 				type="tns:Identifier_Type" />
+ 			<element name="BillTypeCode" type="long" minOccurs="0"
+ 				maxOccurs="1" />
+ 			<element name="PmtType" type="tns:PmtTypeOpenEnum"
+ 				minOccurs="0" maxOccurs="1" />
+ 			<element name="BillingAcct" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+
+ 						<maxLength value="128"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="ExtraBillingAcctKeys"
+ 				type="tns:ExtraBillingAcctKeysType" minOccurs="0" maxOccurs="1">
+ 			</element>
+ 			<element name="StrDate" type="date" minOccurs="0"
+ 				maxOccurs="1" />
+ 			<element name="Alias" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+
+ 						<maxLength value="32"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="DefSofId" minOccurs="0" maxOccurs="1"
+ 				type="tns:NC36_Type" />
+ 			<element name="EnrUID" minOccurs="0" maxOccurs="1"
+ 				type="tns:Identifier_Type" />
+ 			<element name="BillingCycleCode" minOccurs="0"
+ 				maxOccurs="1" type="tns:BillingCycleCodeType" />
+ 			<element name="DeactivationReason" minOccurs="0"
+ 				maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+ 						<maxLength value="256" />
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+
+ 			<element name="NotifyMobile" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+
+ 						<maxLength value="32"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+
+ 			<element name="EnrStatus" minOccurs="0" maxOccurs="1"
+ 				type="tns:EnrStatusEnum" />
+ 			<element name="HasMandate" type="boolean" maxOccurs="1" minOccurs="0"></element>
+ 		</sequence>
+  	</complexType>
+ 	
+ 	<complexType name="GetEnrRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" minOccurs="0" maxOccurs="1"/>
+			<element name="SearchData" minOccurs="1" maxOccurs="1" type="tns:SearchDataType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SearchDataType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="EnrUID" type="tns:Identifier_Type" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="MandUID" type="tns:Identifier_Type" minOccurs="0" maxOccurs="1"></element>
+			<element name="SearchType" type="tns:SearchTypeOpenEnum" minOccurs="1" maxOccurs="1" />
+			<element name="FetchBills" type="boolean" maxOccurs="1" minOccurs="0"></element>
+			<element name="BillTypeCode" type="tns:Identifier_Type" maxOccurs="1" minOccurs="0"></element>
+			<element name="EnrollmentType" type="tns:EnrollmentTypeOpenEnum" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+ 	
+	<complexType name="GetEnrRsType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="EnrsMandsRecs" type="tns:EnrsMandsRecsType" minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+ 	
+ 	 	<complexType name="EnrsDataType">
+ 		<sequence>
+ 			<element name="EnrData" minOccurs="1" maxOccurs="unbounded" type="tns:EnrDataType"/>
+ 		</sequence>
+ 	</complexType>
+ 	
+ 	<complexType name="EnrDataType">
+ 		<sequence>
+ 			<element name="EnrType" minOccurs="0" maxOccurs="1"
+ 				type="tns:EnrTypeOpenEnum" />
+ 			<element name="BillerId" minOccurs="0" maxOccurs="1"
+ 				type="tns:Identifier_Type" />
+ 			<element name="BillTypeCode" type="long" minOccurs="1"
+ 				maxOccurs="1" />
+ 			<element name="PmtType" type="tns:PmtTypeOpenEnum"
+ 				minOccurs="0" maxOccurs="1" />
+ 			<element name="BillingAcct" minOccurs="1" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+
+ 						<maxLength value="128"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="ExtraBillingAcctKeys"
+ 				type="tns:ExtraBillingAcctKeysType" minOccurs="0" maxOccurs="1">
+ 			</element>
+ 			<element name="StrDate" type="date" minOccurs="0"
+ 				maxOccurs="1" />
+ 			<element name="Alias" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+
+ 						<maxLength value="32"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="EnrUID" minOccurs="1" maxOccurs="1"
+ 				type="tns:Identifier_Type" />
+ 			<element name="BillingFreq" minOccurs="0" maxOccurs="1"
+ 				type="tns:BillingFreqType" />
+ 			<element name="BillingCycleCode" minOccurs="0"
+ 				maxOccurs="1" type="tns:BillingCycleCodeType" />
+ 			<element name="DeactivationReason" minOccurs="0"
+ 				maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+ 						<maxLength value="256" />
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+
+ 			<element name="NotifyMobile" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+
+ 						<maxLength value="32"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="EnrStatus" minOccurs="0" maxOccurs="1"
+ 				type="tns:EnrStatusEnum" />
+ 			<element name="nextInqDate" type="date" maxOccurs="1"
+ 				minOccurs="0">
+ 			</element>
+ 			<element name="CreationDate" minOccurs="0" maxOccurs="1"
+ 				type="dateTime">
+ 			</element>
+ 			<element name="BillInfo" type="tns:BillInfoType"
+ 				maxOccurs="1" minOccurs="0">
+ 			</element>
+ 			<element name="HasMandate" type="boolean" maxOccurs="1" minOccurs="0"></element>
+ 		</sequence>
+ 	</complexType>
+
+ 	<complexType name="EnrsMandsRecsType">
+ 		<sequence>
+ 			<element name="EnrMandsRec" type="tns:EnrMandsRecType" minOccurs="1" maxOccurs="unbounded"></element>
+ 		</sequence>
+ 	</complexType>
+ 	
+    <complexType name="EnrMandsRecType">
+    	<sequence>
+    		<element name="EnrData" type="tns:EnrDataType" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="MandatesData" type="tns:MandsDataType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="MandsDataType">
+    	<sequence>
+    		<element name="MandateData" type="tns:MandateDataType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="EnrDataRecsType">
+    	<sequence>
+            <element name="EnrData" minOccurs="1" maxOccurs="unbounded" type="tns:EnrDataRqType" />
+        </sequence>
+    </complexType>
+
+    <complexType name="EnrDataRsRecsType">
+    	<sequence>
+            <element name="EnrData" minOccurs="1" maxOccurs="unbounded" type="tns:EnrDataRsType" />
+        </sequence>
+    </complexType>
+</schema>

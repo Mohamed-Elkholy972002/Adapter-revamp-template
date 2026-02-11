@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"   >
+	<bindings schemaLocation="FAWRY_IFX.xsd" node="/xs:schema">
+		<globalBindings>
+		    <serializable uid="1"/>
+			<javaType name="java.util.Calendar" xmlType="xs:dateTime"
+			parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime"
+			printMethod="javax.xml.bind.DatatypeConverter.printDateTime"    />
+			<javaType name="java.util.Calendar" xmlType="xs:date"
+			parseMethod="javax.xml.bind.DatatypeConverter.parseDate"
+			printMethod="javax.xml.bind.DatatypeConverter.printDate"    />
+			<javaType name="java.util.Calendar" xmlType="xs:date"
+			parseMethod="javax.xml.bind.DatatypeConverter.parseTime"
+			printMethod="javax.xml.bind.DatatypeConverter.printTime"    />
+			
+		</globalBindings>
+	</bindings>
+</bindings>

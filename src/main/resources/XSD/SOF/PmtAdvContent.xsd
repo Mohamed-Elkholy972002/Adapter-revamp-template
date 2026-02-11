@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	 
+     <include schemaLocation="CoreLib.xsd"></include>
+     
+	<complexType name="PmtAdvRqType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="PmtRec" type="tns:PmtRecType" minOccurs="1"
+				maxOccurs="unbounded">
+			</element>
+			<element name="AuthInfo" type="tns:AuthInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="DiscountInfo" type="tns:DiscountInfoType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+ 
+	<complexType name="PmtAdvRsType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="DiscountInfo" type="tns:DiscountInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="PmtStatusRec" type="tns:PmtStatusRecType"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+  
+</schema>
+	

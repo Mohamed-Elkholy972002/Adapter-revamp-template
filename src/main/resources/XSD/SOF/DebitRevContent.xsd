@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+
+
+
+	<complexType name="DebitRevRqType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded"></element>
+
+			<element name="RevReasonCode" type="tns:RevReasonCodeOpenEnum"
+				minOccurs="1">
+			</element>
+			<element name="Desc" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="80"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="DebitMsgRqInfo" type="tns:DebitMsgRqInfoType"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="DebitMsgRqInfoType">
+		<sequence>
+
+			<element name="DebitId" minOccurs="0"
+				type="tns:Identifier_Type" maxOccurs="1">
+			</element>
+			<element name="DebitAddRq" type="tns:DebitAddRqType"
+				minOccurs="0">
+			</element>
+			<element name="ExternalSOFCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="AccountInfo" type="tns:AccountInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="MerchantInfo" type="tns:MerchantInfoType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="DebitRevRsType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded"></element>
+
+			<element name="RevReasonCode" type="tns:RevReasonCodeOpenEnum"
+				minOccurs="1">
+			</element>
+			<element name="Desc" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="80"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="DebitMsgRqInfo" type="tns:DebitMsgRqInfoType"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+</schema>

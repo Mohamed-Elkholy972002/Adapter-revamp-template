@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	
+	<complexType name="GetCustSOFsRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="CustSOFsSearchData" minOccurs="1" maxOccurs="1"
+				type="tns:CustSOFsSearchDataRqType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="CustSOFsSearchDataRqType">
+		<sequence>
+			<element name="IncludeDefault" minOccurs="1" maxOccurs="1" type="boolean" />
+		
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1" />
+				
+			<element name="FawryCustNumber" type="tns:FawryCustNumberType" minOccurs="0" maxOccurs="1" />
+			
+			<element name="SOFAlias" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			
+			<element name="SOFId" minOccurs="0" maxOccurs="1" type="tns:C128_Type" />
+			
+			<element name="SOFLastFourDigits" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type" />
+
+			<element name="StatusListPerAcctType" type="tns:StatusListPerAcctType" minOccurs="0" maxOccurs="unbounded" />
+			
+			<element name="FromLastModificationDate" type="date" minOccurs="0" maxOccurs="1" />
+			
+			<element name="ToLastModificationDate" type="date" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="StatusListPerAcctType">
+		<sequence>
+			<element name="AcctType" type="tns:AcctTypeOpenEnum" minOccurs="1" maxOccurs="1" />
+
+			<element name="SOFStatusList" type="tns:SOFStatusList" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="GetCustSOFsRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType" minOccurs="0" maxOccurs="1" />
+			
+			<element name="CustSOFs" minOccurs="0" maxOccurs="unbounded" type="tns:CustSOFsType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="CustSOFsType">
+		<sequence>			
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1" />
+			<element name="FawryCustNumber" type="tns:FawryCustNumberType" minOccurs="0" maxOccurs="1" />
+			<element name="SourceOfFunds" minOccurs="0" maxOccurs="1" type="tns:SourceOfFundsType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="CustCardSearchDataRsType">
+		<sequence>
+
+			<element name="CardAlias" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			
+			<element name="CardNumber" minOccurs="1" maxOccurs="1" type="tns:C128_Type" />
+			
+			<element name="CardLastFourDigits" minOccurs="1" maxOccurs="1" type="tns:Identifier_Type" />
+
+			<element name="AcctType" type="tns:AcctTypeOpenEnum" minOccurs="1" maxOccurs="1" />
+
+			<element name="CardStatus" minOccurs="1" maxOccurs="1" type="tns:SOFStatusOpenEnum" />
+
+			<element name="AuthInfo" type="tns:AuthInfoType" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SOFStatusList">
+		<sequence>
+			<element name="SOFStatus" minOccurs="1" maxOccurs="unbounded"
+					type="tns:SOFStatusOpenEnum" />
+		</sequence>
+	</complexType>
+	
+
+	<complexType name="MngCustCardRqType">
+		<sequence>
+			<element name="CustCardData" minOccurs="1" maxOccurs="1"
+				type="tns:CustCardDataType" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="MngCustCardRsType">
+		<sequence>
+			<element name="CustCardData" minOccurs="1" maxOccurs="1"
+				type="tns:CustCardDataType" />
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="CustCardDataType">
+		<sequence>
+
+			<element name="OptType" minOccurs="1" maxOccurs="1"
+				type="tns:OptTypeEnum">
+			</element>
+
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="1"
+				maxOccurs="1" />
+
+			<element name="FawryCustNumber"
+				type="tns:FawryCustNumberType" minOccurs="1" maxOccurs="1" />
+
+			<element name="CardAlias" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="CardNumber" minOccurs="1" maxOccurs="1"
+				type="tns:C128_Type" />
+
+			<element name="NewCardNumber" minOccurs="0" maxOccurs="1"
+				type="tns:C128_Type" />
+
+			<element name="CardLastFourDigits" minOccurs="0"
+				maxOccurs="1" type="tns:Identifier_Type" />
+
+			<element name="CardCVV" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="CardExpiryDate" type="tns:CardExpiryDateType"
+				minOccurs="0" maxOccurs="1" />
+
+			<element name="AcctType" type="tns:AcctTypeOpenEnum"
+				minOccurs="1">
+			</element>
+
+			<element name="CardStatus" minOccurs="0" maxOccurs="1"
+				type="tns:SOFStatusOpenEnum" />
+
+			<element name="SerialNumber" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="AuthInfo" type="tns:AuthInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	
+
+
+</schema>

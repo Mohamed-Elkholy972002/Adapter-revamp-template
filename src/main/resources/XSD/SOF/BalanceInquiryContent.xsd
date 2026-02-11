@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+
+
+	<complexType name="BalanceInqRqType">
+		<sequence>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="IncludeSubAccts" type="boolean" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="AcctInfo" type="tns:AcctInfoType" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="InquiredAcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0"></element>
+			<element name="IncludeFinanceProgram" type="boolean"
+				maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="BalanceInqRsType">
+		<sequence>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IncludeSubAccts" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AcctInfo" type="tns:AcctInfoType" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element name="ExternalSOFCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0"></element>
+			<element name="InquiredAcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0"></element>
+			<element name="IncludeFinanceProgram" type="boolean"
+				maxOccurs="1" minOccurs="0"></element>
+			
+		</sequence>
+	</complexType>
+
+
+	
+
+
+</schema>

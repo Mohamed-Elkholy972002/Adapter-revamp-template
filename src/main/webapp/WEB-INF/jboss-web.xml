@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <context-root>/HalanBNPLAdapter/v1</context-root>
+    <env-entry>
+        <env-entry-name>spring.config.location</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>file:${jboss.home.dir}\sharedResources\HalanBNPLAdapter\resources\application.yml</env-entry-value>
+    </env-entry>
+
+</jboss-web>

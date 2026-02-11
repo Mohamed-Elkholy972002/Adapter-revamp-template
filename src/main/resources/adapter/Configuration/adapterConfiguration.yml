@@ -1,0 +1,11 @@
+adaptersConfigs:
+  configs:
+    DebitAddRq:
+      - transformer: DebitAddRequestTransformerImpl
+        connector: DebitAddConnectorImpl
+    DebitRevRq:
+      - transformer: DebitRevRequestTransformerImpl
+        connector: DebitRevConnectorImpl
+
+
+

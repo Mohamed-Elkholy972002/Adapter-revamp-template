@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+    <include schemaLocation="CoreLib.xsd"></include>
+
+
+    <complexType name="MndtInfoType">
+    	<sequence minOccurs="0" maxOccurs="1">
+    		
+    		
+    		<element name="MndtUID" type="tns:Identifier_Type" minOccurs="1" maxOccurs="1"></element>
+    	<element name="MndtRefNo" type="tns:Identifier_Type" minOccurs="0" maxOccurs="1"></element>
+    	<element name="PmtInstUID" type="tns:Identifier_Type" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+<complexType name="PmtInstructRqType">
+    
+    			<sequence>
+
+
+            <element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1"></element>
+            <element name="PmtRec" type="tns:PmtRecType" minOccurs="1" maxOccurs="1"></element>
+    		<element name="MndtInfoType" minOccurs="0" maxOccurs="1" type="tns:MndtInfoType"></element>
+
+    			</sequence>
+
+
+</complexType>
+    
+    
+
+
+    <complexType name="PmtInstructRsType">
+    	<sequence minOccurs="0" maxOccurs="1">
+    		<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1"></element>
+    		<element name="PmtStatusRec" type="tns:PmtStatusRecType" minOccurs="0" maxOccurs="1"></element>
+    		<element name="PmtStatus" type="tns:PmtStatusType" minOccurs="0"></element>
+			<element name="PmtInfo" type="tns:PmtInfoType" minOccurs="0"></element>
+            <element name="MndtInfoType" minOccurs="0" maxOccurs="1" type="tns:MndtInfoType">
+   </element>
+    	</sequence>
+    </complexType>
+</schema>

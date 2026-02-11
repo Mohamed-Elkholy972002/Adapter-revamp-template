@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+
+	<complexType name="GetShippingFeesRqType">
+		<sequence>
+			<element name="DeliveryType" maxOccurs="1" minOccurs="0"
+				type="string">
+			</element>
+			
+			<element name="PaymentOption" maxOccurs="1" minOccurs="0"
+				type="tns:PaymentOptionOpenEnum" />
+			
+			<element name="MerchantId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			
+			<element name="ShippingAddress" minOccurs="1" maxOccurs="1"
+				type="tns:AddressType" />
+				
+			<element name="Items" type="tns:ItemsType" minOccurs="0"
+				maxOccurs="1" />
+				
+			<element name="BillTypeCode" type="long" minOccurs="0"></element>
+			
+			
+			
+		</sequence>
+	</complexType>
+
+
+	<complexType name="GetShippingFeesRsType">
+		<sequence>
+			<element name="DeliveryType" maxOccurs="1" minOccurs="0"
+				type="string">
+			</element>
+
+			<element name="PaymentOption" maxOccurs="1" minOccurs="0"
+				type="tns:PaymentOptionOpenEnum" />
+
+			<element name="MerchantId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+
+			<element name="ShippingAddress" minOccurs="0" maxOccurs="1"
+				type="tns:AddressType" />
+
+
+			<element name="BillTypeCode" type="long" minOccurs="0"></element>
+
+			<element name="Items" type="tns:ItemsType" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="Couriers" type="tns:CouriersType" minOccurs="0"
+			maxOccurs="1"></element>
+
+			<element name="CashOnDeliveryExtraFees" type="double" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+</schema>

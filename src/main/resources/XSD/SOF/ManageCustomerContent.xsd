@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+
+	<complexType name="MngCustRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="BankId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+		    <element name="BillTypeCode" minOccurs="0" maxOccurs="1"
+				type="long" />
+
+			<element name="CustData" minOccurs="1" maxOccurs="1"
+				type="tns:CustDataRqType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="MngCustRsType">
+		<sequence>
+			<element name="CustData" minOccurs="0" maxOccurs="1"
+				type="tns:CustDataRsType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="CardWhiteList">
+		<sequence>
+			<element name="CardAcctId" type="tns:CardAcctIdType" minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="CustDataRsType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1" />
+			<element name="OptType" minOccurs="0" maxOccurs="1"
+				type="tns:OptTypeEnum">
+			</element>
+			<element name="CustType" minOccurs="0" maxOccurs="1"
+				type="tns:CustTypeOpenEnum" />
+			<element name="CustStatus" type="tns:CustStatusEnum"
+				minOccurs="0" maxOccurs="1" />
+			<element name="Name" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MiddleName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SecondaryName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SecondaryMiddleName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SecondaryLastName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MotherFirstName" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MotherMiddleName" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MotherLastName" maxOccurs="1"
+				minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="NationalityCode" minOccurs="0" maxOccurs="1"
+				type="tns:NationalityCodeOpenEnum" />
+			<element name="PrimaryBranchCode" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="DeactivationReason" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="IsAutoArchive" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+			<element name="AutoArchivePeriod" minOccurs="0"
+				maxOccurs="1" type="long" />
+			<element name="CustCategory" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="IsCCardEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="ContactInfo" minOccurs="0"
+				maxOccurs="unbounded" type="tns:ContactInfoType" />
+			<element name="SourceOfFunds" minOccurs="0" maxOccurs="1"
+				type="tns:SourceOfFundsType" />
+			<element name="FawryCustNumber" minOccurs="0" maxOccurs="1"
+				type="tns:FawryCustNumberType" />
+			<element name="LastName" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BirthDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="LinkCustomerReg" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="ActivationCode" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="HasCCardWhiteList" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CCardWhiteList" type="tns:CardWhiteList"
+				minOccurs="0">
+			</element>
+			<element name="CustomerUsedCards"
+				type="tns:CustomerUsedCards" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="Gender" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="CustPhoto" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="MartialStatus"
+				type="tns:MartialStatusOpenEnum" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustAddresses" minOccurs="0" maxOccurs="1"
+				type="tns:CustAddressesType" />
+			<element name="DashboardViewingType" minOccurs="0"
+				maxOccurs="1" type="tns:DashboardViewingTypeEnum" />
+
+			<element name="KYCLevel" minOccurs="0"
+				type="tns:KYCLevelOpenEnum">
+			</element>
+
+			<element name="BirthPlace" minOccurs="0"
+				type="tns:PlaceOfBirthType" />
+
+			<element name="OtherNationalityCode" minOccurs="0"
+				maxOccurs="1" type="tns:NationalityCodeOpenEnum" />
+
+			<element name="HasBankAcct" type="boolean" maxOccurs="1"
+				minOccurs="0" />
+
+			<element name="JobTitle" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="MonthlySalary" minOccurs="0" maxOccurs="1"
+				type="double" />
+
+			<element name="CompanyName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="Memo" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="ExternalWLTCode" type="tns:C128_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="BusinessDomain" type="tns:C128_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsSelfReg" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+			<element name="RegVerMethod" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="CustPhotoBinary" type="base64Binary"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustValStatus" type="tns:CustStatusEnum"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="MasterAcctID" type="tns:C128_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustomerSubscriptions" type="tns:CustomerSubscriptionsType" maxOccurs="1" minOccurs="0"></element>
+ 		</sequence>
+	</complexType>
+
+	<complexType name="CustDataRqType">
+		<complexContent>
+			<extension base="tns:CustDataType">
+				<sequence>
+					<element name="FawryCustNumber" minOccurs="0"
+						maxOccurs="1" type="tns:FawryCustNumberType" />
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+	<complexType name="GetCustRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="BankId" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type" />
+			<element name="BankIds" minOccurs="0" maxOccurs="1" type="tns:BankIdsType" />
+			<element name="CustSearchData" minOccurs="1" maxOccurs="1"
+				type="tns:CustSearchDataRqType" />
+		</sequence>
+	</complexType>
+	
+	 <complexType name="BankIdsType">
+    	<sequence>
+    		<element name="BankIdList" type="tns:BankIdListType" maxOccurs="1" minOccurs="0"> </element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BankIdListType">
+    	<sequence>
+    		<element name="BankId" type="string" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+
+	<complexType name="GetCustRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1" />
+			<element name="BankId" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="CustsSearchData" minOccurs="0" maxOccurs="1"
+				type="tns:CustsSearchDataRsType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="CustSearchDataRqType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="UserName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="40"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Name" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="40"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MiddleName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="LastName" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="FawryCustNumber" minOccurs="0" maxOccurs="1"
+				type="tns:FawryCustNumberType" />
+			<element name="NationalityCode" minOccurs="0" maxOccurs="1"
+				type="tns:NationalityCodeOpenEnum" />
+			<element name="SearchCriteria" minOccurs="1" maxOccurs="1"
+				type="tns:SearchCriteriaOpenEnum" />
+			<element name="SearchMode" minOccurs="0" maxOccurs="1"
+				type="tns:SearchModeOpenEnum" />
+			<element name="SourceOfFund" minOccurs="0" maxOccurs="1"
+				type="tns:SourceOfFundSearchType" />
+			<element name="PrimaryBranchCode" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ContactInfo" minOccurs="0"
+				maxOccurs="unbounded" type="tns:ContactInfoType" />
+			<element name="AutoRegCustomer" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="IsLogin" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="FromRegDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="ToRegDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AcctLastFourDigits"
+				type="tns:AcctLastFourDigitsType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IncludeDeletedAcct" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="ReturnVelocityCounters" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustomerSubscriptions"
+				type="tns:CustomerSubscriptionsType" maxOccurs="1" minOccurs="0" />
+			<element name="IssuerBankId" type="string" maxOccurs="1"
+				minOccurs="0"/>		
+			<element name="ReturnCustImages" type="boolean" maxOccurs="1" minOccurs="0"></element>
+			 <element name="TokenNumber" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="45"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="IncludeConsumedLimits" type="boolean" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="CustsSearchDataRsType">
+		<sequence>
+			<element name="CustSearchDataRs" minOccurs="1" maxOccurs="unbounded" type="tns:CustSearchDataRsType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="CustSearchDataRsType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="UserName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="40"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Name" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MiddleName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="LastName" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SecondaryName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SecondaryMiddleName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SecondaryLastName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MotherFirstName" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MotherMiddleName" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="MotherLastName" maxOccurs="1"
+				minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="200"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BirthDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="NationalityCode" minOccurs="0" maxOccurs="1"
+				type="tns:NationalityCodeOpenEnum" />
+			<element name="PrimaryBranchCode" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="FawryCustNumber" minOccurs="0" maxOccurs="1"
+				type="tns:FawryCustNumberType" />
+			<element name="DeactivationReason" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="IsAutoArchive" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+			<element name="AutoArchivePeriod" minOccurs="0"
+				maxOccurs="1" type="long" />
+			<element name="CustType" minOccurs="1" maxOccurs="1"
+				type="tns:CustTypeOpenEnum" />
+			<element name="ContactInfo" minOccurs="0"
+				maxOccurs="unbounded" type="tns:ContactInfoType" />
+			<element name="SourceOfFunds" minOccurs="0" maxOccurs="1"
+				type="tns:SourceOfFundsType" />
+			<element name="SearchCriteria"
+				type="tns:SearchCriteriaOpenEnum" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="SearchMode" minOccurs="0" maxOccurs="1"
+				type="tns:SearchModeOpenEnum" />
+			<element name="CustStatus" type="tns:CustStatusEnum"
+				minOccurs="1" maxOccurs="1" />
+			<element name="SourceOfFund" minOccurs="0" maxOccurs="1"
+				type="tns:SourceOfFundSearchType" />
+			<element name="NotifPreferredLang"
+				type="tns:LanguageOpenEnum" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustCategory" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsCCardEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AutoRegCustomer" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="LastLoginDate" minOccurs="0" maxOccurs="1"
+				type="dateTime">
+			</element>
+			<element name="ActivationCode" minOccurs="0"
+				maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="RegisterationDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="ActivationDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="HasCCardWhiteList" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CCardWhiteList" type="tns:CardWhiteList"
+				minOccurs="0">
+			</element>
+			<element name="CustomerUsedCards"
+				type="tns:CustomerUsedCards" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="Gender" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="CustPhoto" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="MartialStatus"
+				type="tns:MartialStatusOpenEnum" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustAddresses" minOccurs="0" maxOccurs="1"
+				type="tns:CustAddressesType" />
+			<element name="DashboardViewingType" minOccurs="0"
+				maxOccurs="1" type="tns:DashboardViewingTypeEnum" />
+
+			<element name="KYCLevel" minOccurs="0"
+				type="tns:KYCLevelOpenEnum">
+			</element>
+
+			<element name="BirthPlace" minOccurs="0"
+				type="tns:PlaceOfBirthType" />
+
+			<element name="OtherNationalityCode" minOccurs="0"
+				maxOccurs="1" type="tns:NationalityCodeOpenEnum" />
+
+			<element name="HasBankAcct" type="boolean" maxOccurs="1"
+				minOccurs="0" />
+
+			<element name="JobTitle" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="MonthlySalary" minOccurs="0" maxOccurs="1"
+				type="double" />
+
+			<element name="CompanyName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="Memo" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+
+			<element name="BusinessDomain" type="tns:C128_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="VelocityCounters"
+				type="tns:VelocityCounterListType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsSelfReg" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+			<element name="RegVerMethod" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="CustPhotoBinary" type="base64Binary"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustValStatus" type="tns:CustStatusEnum"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="WeeklyCrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="WeeklyDrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="CustExtraDetails"
+				type="tns:CustomPropertiesType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="CustomerSubscriptions"
+				type="tns:CustomerSubscriptionsType" maxOccurs="1" minOccurs="0" />
+				
+			<element name="RegistrationMobileNum" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+
+
+	<simpleType name="AcctLastFourDigitsType">
+		<restriction base="string">
+			<maxLength value="4"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<complexType name="VelocityCounterListType">
+		<sequence>
+			<element name="VelocityCounter" type="tns:VelocityCounterType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+    <complexType name="VelocityCounterType">
+    
+    <sequence>
+			<element name="Code" type="long" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="MeasureType" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AccountType" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="BankChannel" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="SourceOfFund" type="tns:SourceOfFundType" maxOccurs="1" minOccurs="0"></element>
+			<element name="BillingAccount" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="ExtraBillingAcctKeys"
+				type="tns:ExtraBillingAcctKeysType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="ErrorCodes" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="PeriodicUnit" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="PeriodicValue" type="int" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Value" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="VelocityLimit" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+		</sequence>
+    </complexType>
+</schema>

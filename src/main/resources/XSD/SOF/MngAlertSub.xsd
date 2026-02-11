@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+    <include schemaLocation="CoreLib.xsd"></include>
+    <complexType name="MngAlertSubRqType">
+		<sequence>
+			<element name="OptType" minOccurs="1" maxOccurs="1" type="tns:OptTypeEnum"/>
+			<element name="CustIds" minOccurs="1" maxOccurs="1" type="tns:CustIdsType"/>
+			<element name="AlertSubscriptions" minOccurs="1" maxOccurs="1" type="tns:AlertsSubscriptionsType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="MngAlertSubRsType">
+		<sequence>
+		    <element name="OptType" minOccurs="0" maxOccurs="1" type="tns:OptTypeEnum"/>
+			<element name="CustIds" minOccurs="0" maxOccurs="1" type="tns:CustIdsType"/>
+			<element name="AlertSubscriptions" minOccurs="0" maxOccurs="1" type="tns:AlertsSubscriptionsType"/>
+		</sequence>
+	</complexType>
+</schema>

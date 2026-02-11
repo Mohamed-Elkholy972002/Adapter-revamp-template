@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+<include schemaLocation="CoreLib.xsd"></include>
+	<complexType name="BillerDetailsRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+            <element name="ServiceType" type="tns:ServiceTypeOpenEnum" minOccurs="0" maxOccurs="1">
+			</element>
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1"></element>
+            <element name="FetchAll" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="BillersIds" minOccurs="0" maxOccurs="1"
+				type="tns:BillersIdsType" />
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="BillersIdsType">
+		<sequence>
+			<element name="BillerId" minOccurs="1" maxOccurs="unbounded" type="tns:Identifier_Type"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillerDetailsRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1"></element>
+            <element name="BillersDetailsRecs" minOccurs="1"
+				maxOccurs="1" type="tns:BillersDetailsRecsType" />
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+	
+	<complexType name="BillersDetailsRecsType">
+		<sequence>
+			<element name="BillerDetailsRec" minOccurs="0" maxOccurs="unbounded" type="tns:BillerDetailsRecType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="BillerDetailsRecType">
+		<sequence>
+			<element name="BillerId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="ShNamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C20_Type" />
+			<element name="ShNameSecLang" minOccurs="1" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="BillerStatus" minOccurs="1" maxOccurs="1"
+				type="tns:BillerStatusEnum" />
+			<element name="BillTypes" minOccurs="0" maxOccurs="1"
+				type="tns:BillTypesType" />
+			<element name="PartialPaymentSupport" type="boolean" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+
+
+</schema>

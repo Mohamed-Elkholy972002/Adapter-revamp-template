@@ -1,0 +1,27 @@
+btc-configurations:
+  configs:
+    55520:
+      integratorName: "Halan_bay"
+      serverKey: "your-server-key"
+      publicKeyPath: "classpath:adapter/rsa-keys/btc/publicKey55520.pem"
+      extraBillInfoPrefixes:
+          prefix1: "Receipt ID: "
+          prefix2: "Period: "
+          prefix3: "Installment: "
+          prefix4: "Amount: "
+          prefix5: "Fees: "
+          prefix6: "Down Payment: "
+          prefix7: "Total: "
+    55521:
+      integratorName: "your-integrator-name"
+      serverKey: "your-server-key"
+      publicKeyPath: "classpath:adapter/rsa-keys/btc/publicKey55521.pem"
+      extraBillInfoPrefixes:
+          prefix1: "Receipt ID: "
+          prefix2: "Period: "
+          prefix3: "Installment: "
+          prefix4: "Amount: "
+          prefix5: "Fees: "
+          prefix6: "Down Payment: "
+          prefix7: "Total: "
+

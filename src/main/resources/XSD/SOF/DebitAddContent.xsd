@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+
+
+	<complexType name="DebitAddRsType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="DebitInfo" type="tns:DebitInfoType"
+				minOccurs="1" maxOccurs="unbounded">
+			</element>
+			<element name="AuthInfo" type="tns:AuthInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="DebitRec" type="tns:DebitRecType"
+				minOccurs="0">
+			</element>
+
+			<element name="LoanAcctInfo" type="tns:LoanAcctInfoType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="DebitRecType">
+		<sequence>
+			<element name="DebitId" minOccurs="0"
+				type="tns:Identifier_Type">
+			</element>
+			<element name="DebitStatus" type="tns:DebitStatusType"
+				minOccurs="0">
+			</element>
+			<element name="CSPRefId" minOccurs="0"
+				type="tns:Identifier_Type">
+			</element>
+
+			<element name="ExternalSOFCode" minOccurs="0"
+				type="tns:Identifier_Type" />
+
+			<element name="AccountInfo" type="tns:AccountInfoType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="MerchantInfo" type="tns:MerchantInfoType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="PSPCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="DiscountInfo" type="tns:DiscountInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="AlternativeDebitRec" type="tns:AlternativeDebitRecType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="DebitStatusType">
+		<sequence>
+			<element name="DebitStatusCode" type="tns:DebitStatusOpenEnum"
+				minOccurs="1"></element>
+			<element name="EffDt" type="dateTime" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="AlternativeDebitRecType">
+		<sequence>
+			<element name="ExternalSOFCode" type="tns:Identifier_Type" maxOccurs="1" minOccurs="1"></element>
+			<element name="AccountInfo" type="tns:AccountInfoType" maxOccurs="1" minOccurs="0"></element>
+			<element name="MerchantInfo" type="tns:MerchantInfoType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+</schema>

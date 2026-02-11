@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+
+	<complexType name="BillUploadRqType">
+		<sequence>
+
+			<element name="BillUploadInfo" type="tns:BillUploadInfoType"
+				minOccurs="1" maxOccurs="1">
+			</element>
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="BillUploadRsType">
+		<sequence>
+
+			<element name="BillUploadInfo" type="tns:BillUploadInfoType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="BillUploadInfoType">
+		<sequence>
+
+			<element name="BillInfo" type="tns:BillDataType" minOccurs="1"
+				maxOccurs="1">
+			</element>
+
+			<element name="BillerInfo" minOccurs="0" maxOccurs="1"
+				type="tns:BillerDataType">
+			</element>
+			
+			<element name="BSPInfo" minOccurs="0" maxOccurs="1"
+				type="tns:BSPInfoType">
+			</element>
+
+			<element name="ShippingInfo" minOccurs="0" maxOccurs="1"
+				type="tns:ShippingDataType">
+			</element>
+
+			<element name="CSPCode" minOccurs="1" type="tns:Identifier_Type">
+			</element>
+
+			<element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum"
+				minOccurs="1" maxOccurs="1">
+			</element>
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="BillerDataType">
+		<sequence>
+			<element name="NotifyEmail" maxOccurs="unbounded" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="MerchantId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="BSPInfoType">
+		<sequence>
+			<element name="BSPCode" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NotifyEmail" maxOccurs="unbounded" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="BillPresenter" minOccurs="0" maxOccurs="1"
+				type="tns:BillPresenterType" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="BillPresenterType">
+		<sequence>
+			<element name="AccountNo" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NotifyEmail" maxOccurs="unbounded" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="50"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ShippingDataType">
+		<sequence>
+
+			<element name="AllowShipping" type="boolean" minOccurs="1"
+				maxOccurs="1"></element>
+
+			<element name="DeliveryType" maxOccurs="1" minOccurs="0"
+				type="string">
+
+			</element>
+
+			<element name="Comment" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="PrefDeliveryTime" type="tns:PrefDeliveryTimeType"
+				minOccurs="0" maxOccurs="unbounded"></element>
+
+			<element name="Charges" type="tns:CurAmtType" minOccurs="0"
+				maxOccurs="1"></element>
+
+			<element name="CourierCode" type="tns:Identifier_Type"
+				minOccurs="0"></element>
+				
+			<element name="CourierAcctId" minOccurs="0" maxOccurs="1" type="tns:C128_Type" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="PrefDeliveryTimeType">
+		<sequence>
+			<element name="FromTime" minOccurs="0" maxOccurs="1" type="time" />
+
+			<element name="ToTime" minOccurs="0" maxOccurs="1" type="time" />
+
+		</sequence>
+	</complexType>
+
+</schema>

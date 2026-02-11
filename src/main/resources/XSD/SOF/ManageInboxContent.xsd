@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	
+	<complexType name="MngInboxRqType">
+		<sequence>
+			<element name="OptType" type="tns:MngInboxOptType" maxOccurs="1"
+				minOccurs="1">
+			</element>
+
+			<element name="AcctRec" maxOccurs="1" minOccurs="0" type="tns:AcctRecType">
+			</element>
+			<element name="CSPRec" maxOccurs="1" minOccurs="0" type="tns:CSPRecType">
+			</element>
+			<element name="InboxData" type="tns:InboxDataType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="MngInboxRsType">
+		<sequence>
+			<element name="OptType" type="tns:MngInboxOptType" maxOccurs="1"
+				minOccurs="1">
+			</element>
+
+			<element name="AcctRec" maxOccurs="1" minOccurs="0" type="tns:AcctRecType">
+			</element>
+			<element name="CSPRec" maxOccurs="1" minOccurs="0" type="tns:CSPRecType">
+			</element>
+			<element name="InboxData" type="tns:InboxDataType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+
+		</sequence>
+	</complexType>
+    
+
+	<complexType name="InboxDataType">
+		<sequence>
+			<element name="MessageRec" type="tns:MessageRecType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="GetInboxRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:MsgsRecCtrlInType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="AcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="MsgType" type="tns:MsgTypeOpenEnum"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="GetInboxRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="MsgType" type="tns:MsgTypeOpenEnum"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsRemainingMessages" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>			
+			<element name="InboxData" type="tns:InboxDataType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	
+
+	<complexType name="AcctRecType">
+		<sequence>
+			<element name="AcctCode" maxOccurs="unbounded"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="20"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			
+			<element name="AcctGrade" maxOccurs="1"
+				minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="1"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>			
+		</sequence>
+	</complexType>
+
+	<complexType name="CSPRecType">
+		<sequence>
+			<element name="CSPCode" maxOccurs="unbounded"
+				minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="20"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	
+</schema>

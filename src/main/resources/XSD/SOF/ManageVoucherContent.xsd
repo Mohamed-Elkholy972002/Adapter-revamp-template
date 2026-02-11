@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+
+
+	<complexType name="VouchUploadRqType">
+		<sequence>
+
+			<element name="BillTypeCode" type="long" minOccurs="0"></element>
+
+			<element name="PmtTransIds" type="tns:PmtTransIdsType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="VouchRec" type="tns:VouchInfoType" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="VouchUploadRsType">
+		<sequence>
+
+			<element name="BillTypeCode" type="long" minOccurs="0"></element>
+
+			<element name="PmtTransIds" type="tns:PmtTransIdsType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="VouchRec" type="tns:VouchInfoType" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+	
+
+</schema>

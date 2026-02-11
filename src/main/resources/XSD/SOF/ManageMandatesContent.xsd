@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	
+	<complexType name="PayMandRqType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1"/>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" minOccurs="0" maxOccurs="1"/>
+			<element name="MandateDataRq" minOccurs="1" maxOccurs="1" type="tns:MandateDataRqType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="PayMandRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType" minOccurs="0" maxOccurs="1" />
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0" maxOccurs="1" />
+			<element name="MandateDataRsRecs" type="tns:MandateDataRsRecsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MandateDataRqType">
+		<complexContent>
+			<extension base="tns:MandatesDataType">
+				<sequence>
+					<element name="OptType" minOccurs="1" maxOccurs="1" type="tns:OptTypeEnum"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+ 
+  <complexType name="MandatesDataType">
+  <sequence>
+   <element name="MandateRecsData" type="tns:MandateRecsDataType" minOccurs="1" maxOccurs="1"/>
+  </sequence>
+ </complexType>
+  
+  <complexType name="MandateRecsDataType">
+  <sequence>
+   <element name="MandateData" type="tns:MandateDataType" minOccurs="1" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+  
+	<complexType name="MandateDataRsType">
+ 		<sequence>
+ 			<element name="OptType" minOccurs="0" maxOccurs="1" type="tns:OptTypeEnum"/>
+ 			<element name="MandType" minOccurs="0" maxOccurs="1" type="tns:MandateTypeOpenEnum"/>
+ 			<element name="BillerId" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type"/>
+ 			<element name="BillTypeCode" minOccurs="0" maxOccurs="1"  type="long"/>
+ 			<element name="BillRefNumber" maxOccurs="1"
+ 				minOccurs="0">
+ 				<simpleType>
+ 					<restriction base="string">
+ 						<maxLength value="36"></maxLength>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="BillingAcct" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ExtraBillingAcctKeys" type="tns:ExtraBillingAcctKeysType" minOccurs="0" maxOccurs="1">
+			</element>
+ 			<element name="StrDate" minOccurs="0" maxOccurs="1"  type="date" />
+ 			<element name="EndDate" minOccurs="0" maxOccurs="1"  type="date" />
+ 			<element name="NoOfOccurs" minOccurs="0" maxOccurs="1" type="long"/>
+ 			<element name="DefSof" minOccurs="0" maxOccurs="1" type="tns:SourceOfFundSearchType"/>
+ 			<element name="AltSof" minOccurs="0" maxOccurs="1" type="tns:SourceOfFundSearchType"/>
+ 			<element name="MandUID" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type"/>
+ 			<element name="EnrUID" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type" />
+ 			<element name="MandCurCode" minOccurs="0" maxOccurs="1" type="tns:CurCodeEnum"/>
+ 			<element name="PmtPercentage" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="PmtThreshold" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="PayAmt" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="PayFreq" minOccurs="0" maxOccurs="1" type="tns:PayFreqType"/>
+ 			<element name="DeactivationReason" minOccurs="0" maxOccurs="1">
+ 				<simpleType>
+ 					<restriction base="string">
+ 						<maxLength value="256"/>
+ 					</restriction>
+ 				</simpleType>
+ 			</element>
+ 			<element name="LastPayPaid" minOccurs="0" maxOccurs="1" type="date"/>
+ 			<element name="NextPayDate" minOccurs="0" maxOccurs="1" type="date"/>
+ 			<element name="PaidPmts" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="TotalAmtPaid" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="RemainingPmts" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="RemainingAmts" minOccurs="0" maxOccurs="1" type="decimal"/>
+ 			<element name="MandateStatus" minOccurs="0" maxOccurs="1" type="tns:MandateStatusOpenEnum"/>
+ 			
+ 			<element name="MBRN" maxOccurs="1" minOccurs="0">
+					<simpleType>
+						<restriction base="string">
+							<maxLength value="36"></maxLength>
+						</restriction>
+					</simpleType>
+			</element>
+			
+			<element name="PmtType" type="tns:PmtTypeEnum" maxOccurs="1" minOccurs="0" />
+			
+			<element name="CustData" type="tns:CustDataType" maxOccurs="1" minOccurs="0"/>
+			
+			<element name="BillerName" maxOccurs="1" minOccurs="0" type = "tns:C160_Type">
+			</element>
+			
+			<element name="AdditionalDeactivationReason" maxOccurs="1" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="Code" maxOccurs="1" minOccurs="1">
+								<simpleType>
+									<restriction base="string">
+										<maxLength value="36"></maxLength>
+									</restriction>
+								</simpleType>
+							</element>
+							<element name="AdditionalInfo" maxOccurs="1" minOccurs="0">
+								<simpleType>
+									<restriction base="string">
+										<maxLength value="500"></maxLength>
+									</restriction>
+								</simpleType>
+							</element>
+						</sequence>
+					</complexType>
+			</element>
+			
+			<element name="DtOfSignature" maxOccurs="1" minOccurs="0" type = "date">
+			</element>
+				
+			<element name="ToSOF" maxOccurs="1" minOccurs="0" type="tns:SourceOfFundSearchType">
+			</element>
+ 			
+ 			<element name="PmtSchemeCode" minOccurs="0" maxOccurs="1"
+ 				type="tns:Identifier_Type" />
+ 			
+ 		</sequence>
+ 	</complexType>
+
+	<complexType name="MandateDataRsRecsType">
+		<sequence>
+			<element name="MandateData" type="tns:MandateDataRsType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+</schema>

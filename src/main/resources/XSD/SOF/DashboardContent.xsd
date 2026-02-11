@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+
+	<complexType name="GetDashboardRqType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="1"
+				maxOccurs="1">
+			</element>
+
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="0"></element>
+
+			<element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum"
+				minOccurs="1" maxOccurs="1">
+			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="GetDashboardRsType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="0"></element>
+
+			<element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="DashboardData" type="tns:DashboardDataType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+		</sequence>
+
+	</complexType>
+
+	<complexType name="DashboardDataType">
+		<sequence>
+		
+			<element name="TtlSpent" type="tns:CurAmtType" minOccurs="1"
+				maxOccurs="1">
+			</element>
+
+			<element name="CustomerTtlSpent" type="tns:CustomerTtlSpentType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="TtlSpentPerMonth"
+				type="tns:TotalSpentsPerMonthType" minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="TtlSpentPerSvcType"
+				type="tns:TotalSpentsPerServiceTypeType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="TtlSpentPerBillType"
+				type="tns:TotalSpentsPerBillTypeType" minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="FreqUsedBillTypes"
+				type="tns:FreqUsedBillTypesType" minOccurs="0" maxOccurs="1">
+			</element>
+
+
+			<element name="FreqUsedEnrollments" type="tns:FreqUsedEnrollmentsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TotalSpentsPerMonthType">
+		<sequence>
+			<element name="SpentPerMonth" type="tns:TotalSpentPerMonthType"
+				minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TotalSpentPerMonthType">
+		<sequence>
+
+			<element name="Month" minOccurs="1" maxOccurs="1"
+				type="integer" />
+			<element name="Year" minOccurs="1" maxOccurs="1"
+				type="integer" />
+
+			<element name="TtlSpentAmt" type="tns:CurAmtType"
+				minOccurs="1">
+			</element>
+
+			<element name="TtlSpentPerSvcType" type="tns:TotalSpentsPerServiceTypeType" maxOccurs="1" minOccurs="0"></element>
+			<element name="Count" type="integer" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TotalSpentsPerServiceTypeType">
+		<sequence>
+			<element name="SpentPerSvcType" type="tns:TotalSpentPerSvcTypeType"
+				minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TotalSpentPerSvcTypeType">
+		<sequence>
+
+			<element name="ServiceType" type="tns:ServiceTypeOpenEnum"
+				minOccurs="1" maxOccurs="1">
+			</element>
+
+			<element name="ServiceTypeName" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="TtlSpent" type="tns:CurAmtType" minOccurs="1"
+				maxOccurs="1">
+			</element>
+
+			<element name="TtlSpentPer" type="double" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="SpendDetails" type="tns:SpentDetailsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="Count" type="integer" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+
+	</complexType>
+
+
+	<complexType name="TotalSpentsPerBillTypeType">
+		<sequence>
+			<element name="SpentPerBillType" type="tns:TotalSpentPerBillTypeType"
+				minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TotalSpentPerBillTypeType">
+		<sequence>
+
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="1">
+			</element>
+
+			<element name="BillTypeName" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="TtlSpent" type="tns:CurAmtType" minOccurs="1"
+				maxOccurs="1">
+			</element>
+
+			<element name="TtlSpentPer" type="double" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="SpentDetails" type="tns:SpentDetailsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="Count" type="integer" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+	
+		<complexType name="FreqUsedBillTypesType">
+		<sequence>
+			<element name="FreqUsedBillType" type="tns:FreqUsedBillTypeType"
+				minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="FreqUsedBillTypeType">
+		<sequence>
+
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="1">
+			</element>
+
+			<element name="BillTypeName" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="TtlSpent" type="tns:CurAmtType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="TtlTrxCount" type="integer" maxOccurs="1"
+				minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="FreqUsedEnrollmentsType">
+		<sequence>
+			<element name="FreqUsedEnrollment" type="tns:FreqUsedEnrollmentType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="FreqUsedEnrollmentType">
+		<sequence>
+			<element name="EnrUID" type="tns:Identifier_Type" maxOccurs="1" minOccurs="1"></element>
+			<element name="TtlSpentAmt" type="tns:CurAmtType" maxOccurs="1" minOccurs="1"></element>
+			<element name="TtlTrxCount" type="integer" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SpentDetailsType">
+		<sequence>
+			<element name="SpentDetail" type="tns:SpentDetailType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SpentDetailType">
+		<sequence>
+			<element name="AcctType" type="tns:AcctTypeOpenEnumBaseType" maxOccurs="1" minOccurs="1"></element>
+			<element name="TtlSpent" type="tns:CurAmtType" maxOccurs="1" minOccurs="1"></element>
+			<element name="TtlSpentPer" type="double" maxOccurs="1" minOccurs="1"></element>
+			<element name="Count" type="integer" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="CustomerTtlSpentType">
+		<sequence>
+			<element name="TtlCustomerSpent" type="tns:CurAmtType" maxOccurs="1" minOccurs="1"></element>
+			<element name="SpentDetails" type="tns:SpentDetailsType" maxOccurs="1" minOccurs="0"></element>
+			<element name="Count" type="integer" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+</schema>

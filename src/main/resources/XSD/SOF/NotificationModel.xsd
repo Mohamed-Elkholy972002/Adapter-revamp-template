@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+    <include schemaLocation="CoreLib.xsd"></include>
+    
+    <complexType name="NotificationModelRqType">
+		<sequence>
+			<element name="FetchAll" minOccurs="1" maxOccurs="1" type="boolean"/>
+			<element name="NotificationSearchCriteria" minOccurs="0" maxOccurs="1" type="tns:NotificationSearchCriteriaType"/>
+			<element name="NotificationMethod" minOccurs="0" maxOccurs="1" type="tns:NotifyMethodOpenEnum"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="NotificationSearchCriteriaType">
+		<sequence>
+			<element name="CategoryCodes" minOccurs="0" maxOccurs="1" type="tns:CategoryCodesType"/>
+			<element name="BillTypeCodes"  minOccurs="0" maxOccurs="1" type="tns:BillTypeCodesType"/>
+			<element name="NotificationsCodes"  minOccurs="0" maxOccurs="1" type="tns:NotificationsCodesType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="CategoryCodesType">
+		<sequence>
+			<element name="CategoryCode"  minOccurs="1" type="tns:CateoryCodeEnum"/>
+		</sequence>
+	</complexType>
+	
+	 
+	
+	<complexType name="NotificationsCodesType">
+		<sequence>
+			<element name="NotificationCode" minOccurs="1" type="tns:notificationCodeEnum"/>
+		</sequence>
+	</complexType>
+	
+	 <complexType name="NotificationModelRsType">
+		<sequence>
+			<element name="Notifications" minOccurs="0" maxOccurs="1" type="tns:NotificationsType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="NotificationsType">
+		<sequence>
+			<element name="Notification" minOccurs="1" type="tns:NotificationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="NotificationType">
+		<sequence>
+			<element name="NotificationPointCode" minOccurs="1" maxOccurs="1" type="tns:NotificationPointCodeOpenEnum"/>			
+			<element name="NamePrimaryLang" minOccurs="1" maxOccurs="1" type="tns:C40_Type"/>
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1" type="tns:C160_Type"/>
+			<element name="DescPrimaryLang" minOccurs="0" maxOccurs="1" type="tns:C80_Type"/>
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1" type="tns:C320_Type"/>
+			<element name="CateoryCode" minOccurs="1" maxOccurs="1" type="tns:CateoryCodeEnum"/>
+			<element name="Status" minOccurs="1" maxOccurs="1" type="tns:LookupStatusOpenEnum"/>
+			<element name="RequireBillType" minOccurs="1" maxOccurs="1" type="boolean"/>
+			<element name="NotificationProperties" minOccurs="0" maxOccurs="1" type="tns:NotificationPropertiesType"/>
+			<element name="BillTypeCodes" minOccurs="0" maxOccurs="1" type="tns:BillTypeCodesType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="NotificationPropertiesType">
+		<sequence>
+			<element name="notificationProperty" minOccurs="1" type="tns:notificationPropertyType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="notificationPropertyType">
+		<sequence>
+			<element name="notifyPropCode" minOccurs="1" maxOccurs="1" type="tns:notifyPropCodeOpenEnum"/>
+			<element name="NotifyPropType" minOccurs="1" maxOccurs="1" type="tns:NotifyTypeOpenEnum"/>
+			<element name="NamePrimaryLang" minOccurs="1" maxOccurs="1" type="tns:C40_Type"/>
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1" type="tns:C160_Type"/>
+			<element name="DescPrimaryLang" minOccurs="0" maxOccurs="1" type="tns:C80_Type"/>
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1" type="tns:C320_Type"/>
+			<element name="Status" minOccurs="1" maxOccurs="1" type="tns:NC36_Type"/>
+		</sequence>
+	</complexType>
+	
+</schema>

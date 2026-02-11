@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+    <include schemaLocation="CoreLib.xsd"></include>
+    
+    <complexType name="GetAlertsRqType">
+		<sequence>
+            <element name="CustIds" minOccurs="1" maxOccurs="1" type="tns:CustIdsType" />
+            <element name="AlertsSearchData" minOccurs="0" maxOccurs="1" type="tns:AlertsSearchDataType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="GetAlertsRsType">
+		<sequence>
+			<element name="CustIds" minOccurs="0" maxOccurs="1" type="tns:CustIdsType"/>
+			<element name="AlertsSubscriptions" minOccurs="0" maxOccurs="1" type="tns:AlertsSubscriptionsType"/>
+		</sequence>
+	</complexType>
+		
+	<complexType name="AlertsSearchDataType">
+		<sequence>
+			<element name="NotificationPoints" minOccurs="0"
+				maxOccurs="1" type="tns:NotificationPointsType" />
+			<element name="BillTypeCodes" minOccurs="0" maxOccurs="1"
+				type="tns:BillTypeCodesType" />
+			<element name="NotificationMethodCodes" minOccurs="0"
+				maxOccurs="1" type="tns:NotificationMethodCodes" />
+			<element name="SubscriptionUUIDs" type="tns:SubScriptionIdsType" minOccurs="0" maxOccurs="1"></element>
+			<element name="EnrUID" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="NotificationMethodCodes">
+		<sequence>
+			<element name="notificationMethodCode" minOccurs="1" maxOccurs="unbounded" type="tns:notificationMethodEnum"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="NotificationPointsType">
+		<sequence>
+			<element name="NotificationPoint" minOccurs="1" maxOccurs="unbounded" type="tns:NotificationPointType"/>
+		</sequence>
+	</complexType>
+    
+
+	<complexType name="SubScriptionIdsType">
+		<sequence>
+			<element name="SubscriptionUUID" type="tns:Identifier_Type" minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+</schema>

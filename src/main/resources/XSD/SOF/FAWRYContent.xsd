@@ -1,0 +1,1354 @@
+
+<schema
+	targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	<include schemaLocation="PmtAdvContent.xsd"></include>
+	<include schemaLocation="PmtNotifyContent.xsd"></include>
+	<include schemaLocation="BillingContent.xsd"></include>
+	<include schemaLocation="BillUploadContent.xsd"></include>
+	<include schemaLocation="BillerContent.xsd"></include>
+	<include schemaLocation="DebitAddContent.xsd"></include>
+	<include schemaLocation="DebitRevContent.xsd"></include>
+	<include schemaLocation="PmtAddContent.xsd"></include>
+	<include schemaLocation="PmtAdvConfrimContent.xsd"></include>
+	<include schemaLocation="ReconciliationContent.xsd"></include>
+	<include schemaLocation="ManageCustomerContent.xsd" />
+	<include schemaLocation="BillEnrollmentContent.xsd" />
+	<include schemaLocation="LookupContent.xsd" />
+	<include schemaLocation="PmtHistContent.xsd"></include>
+	<include schemaLocation="ManageMandatesContent.xsd" />
+	<include schemaLocation="NotificationModel.xsd" />
+	<include schemaLocation="NotificationAlert.xsd" />
+	<include schemaLocation="MngAlertSub.xsd" />
+
+	<include schemaLocation="PaymentCenterContent.xsd"></include>
+	<include schemaLocation="InstructionsContent.xsd"></include>
+	<include schemaLocation="CategoryDetailsContent.xsd"></include>
+	<include schemaLocation="AcctTypeSchemeContent.xsd"></include>
+	<include schemaLocation="AccountTypeDetailsContent.xsd"></include>
+	<include schemaLocation="EStatementContent.xsd"></include>
+	<include schemaLocation="ManageCreditCardContent.xsd"></include>
+	<include schemaLocation="PmtInqContent.xsd"></include>
+	<include schemaLocation="InvalidateCacheContent.xsd"></include>
+	<include schemaLocation="PmtReFireContent.xsd"></include>
+	<include schemaLocation="LinkCustPmtsContent.xsd"></include>
+	<include schemaLocation="ManageInboxContent.xsd"></include>
+	<include schemaLocation="ManageAccountContent.xsd"></include>
+	<include schemaLocation="GenerateOneTimePasswordContent.xsd"></include>
+	<include schemaLocation="ManageTerminalProfileContent.xsd"></include>
+	<include schemaLocation="ShippingContent.xsd"></include>
+	<include schemaLocation="ManageOrderContent.xsd"></include>
+	<include schemaLocation="ManageVoucherContent.xsd"></include>
+	<include schemaLocation="BalanceSheetContent.xsd"></include>
+	<include schemaLocation="BalanceInquiryContent.xsd"></include>
+	<include schemaLocation="ChangePinContent.xsd"></include>
+	<include schemaLocation="KeyExchangeContent.xsd"></include>
+	<include schemaLocation="DashboardContent.xsd"></include>
+	<complexType name="PresSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="BillInqRs" type="tns:BillInqRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="BillUploadRs"
+						type="tns:BillUploadRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="VouchUploadRs"
+						type="tns:VouchUploadRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="BillerInqRs"
+						type="tns:BillerInqRsType" minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="NotificationModelRs"
+						type="tns:NotificationModelRsType" minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="GetShippingFeesRs"
+						type="tns:GetShippingFeesRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="MngOrderRs" type="tns:MngOrderRsType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetOrderRs"
+						type="tns:GetOrdersRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="BalanceInqRs"
+						type="tns:BalanceInqRsType" maxOccurs="1" minOccurs="1">
+					</element>
+
+					<element name="BalanceSheetRs"
+						type="tns:BalanceSheetRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetDashboardRs"
+						type="tns:GetDashboardRsType" maxOccurs="1" minOccurs="1">
+					</element>
+
+					<element name="BillersStructureRs" type="tns:BillersStructureRsType" maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="PresSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="BillerInqRq"
+						type="tns:BillerInqRqType" minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="BillInqRq" type="tns:BillInqRqType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="BillUploadRq"
+						type="tns:BillUploadRqType" maxOccurs="1" minOccurs="1">
+					</element>
+
+					<element name="VouchUploadRq"
+						type="tns:VouchUploadRqType" maxOccurs="1" minOccurs="1">
+					</element>
+
+					<element name="NotificationModelRq"
+						type="tns:NotificationModelRqType" minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="GetShippingFeesRq"
+						type="tns:GetShippingFeesRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="MngOrderRq" type="tns:MngOrderRqType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetOrdersRq"
+						type="tns:GetOrdersRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="BalanceInqRq"
+						type="tns:BalanceInqRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="BalanceSheetRq"
+						type="tns:BalanceSheetRq" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetDashboardRq"
+						type="tns:GetDashboardRqType" maxOccurs="1" minOccurs="1">
+					</element>
+
+					<element name="BillersStructureRq" type="tns:BillersStructureRqType" maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+
+	<complexType name="PaySvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="PmtAddRq" type="tns:PmtAddRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtAdvConfRq" type="tns:PmtAdvConfRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtNotifyRq" type="tns:PmtNotifyRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtAdvRq" type="tns:PmtAdvRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtInqRq" type="tns:PmtInqRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtReFireRq" type="tns:PmtReFireRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="CashoutRq" type="tns:CashoutRqType"
+						maxOccurs="1" minOccurs="1"></element>
+					<element name="LinkCustPmtsRq"
+						type="tns:LinkCustPmtsRqType" maxOccurs="1" minOccurs="1"></element>
+
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="PaySvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="PmtAdvConfRs" type="tns:PmtAdvConfRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtNotifyRs" type="tns:PmtNotifyRsType"
+						minOccurs="0" maxOccurs="1">
+					</element>
+					<element name="PmtAdvRs" type="tns:PmtAdvRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtAddRs" type="tns:PmtAddRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtInqRs" type="tns:PmtInqRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PmtReFireRs" type="tns:PmtReFireRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="CashoutRs" type="tns:CashoutRsType"
+						maxOccurs="1" minOccurs="1"></element>
+					<element name="LinkCustPmtsRs"
+						type="tns:LinkCustPmtsRsType" maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+
+
+	<complexType name="ReconSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="ReconCutOffRq" type="tns:ReconCutOffType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="ReconTotalsRq" type="tns:ReconTotalsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="ReconTotalsResultRq"
+						type="tns:ReconTotalsResultType" minOccurs="1" maxOccurs="1">
+					</element>
+
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BatchSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="BatchRq" type="tns:BatchRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="BatchExecuterRq"
+						type="tns:BatchExecuterRqType" minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="BatchCloseRq" type="tns:BatchCloseRqType"
+						maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BatchSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<sequence minOccurs="1" maxOccurs="1">
+					<choice>
+						<element name="BatchRs" type="tns:BatchRsType"
+							minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="BatchExecuterRs"
+							type="tns:BatchExecuterRsType" minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="BatchCloseRs" type="tns:BatchCloseRsType"
+						maxOccurs="1" minOccurs="1"></element>
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="ReconSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<sequence>
+					<element name="ReconID" minOccurs="1" maxOccurs="1">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="36"></maxLength>
+							</restriction>
+						</simpleType>
+					</element>
+					<element name="ReconCutOffRs" type="tns:ReconCutOffType"
+						minOccurs="0" maxOccurs="1">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RegSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<sequence minOccurs="1" maxOccurs="1">
+					<choice>
+						<element name="LookupRq" type="tns:LookupRqType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="GetCustRq" type="tns:GetCustRqType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="MngCustRq" type="tns:MngCustRqType"
+							minOccurs="1" maxOccurs="1" />
+
+						<element name="MngCustCardRq" type="tns:MngCustCardRqType"
+							minOccurs="1" maxOccurs="1" />
+
+						<element name="GetCustSOFsRq" type="tns:GetCustSOFsRqType"
+							minOccurs="1" maxOccurs="1" />
+
+						<element name="MngAcctRq" type="tns:MngAcctRqType"
+							maxOccurs="1" minOccurs="1">
+						</element>
+						<element name="MngLookupRq" type="tns:MngLookupRqType"
+							maxOccurs="1" minOccurs="1"></element>
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RegSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<sequence minOccurs="1" maxOccurs="1">
+					<choice>
+						<element name="GetCustRs" type="tns:GetCustRsType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="MngCustRs" type="tns:MngCustRsType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="LookupRs" type="tns:LookupRsType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="MngCustCardRs" type="tns:MngCustCardRsType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="GetCustSOFsRs" type="tns:GetCustSOFsRsType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="MngAcctRs" type="tns:MngAcctRsType"
+							maxOccurs="1" minOccurs="1">
+						</element>
+						<element name="MngLookupRs" type="tns:MngLookupRsType"
+							maxOccurs="1" minOccurs="1"></element>
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="APaySvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<sequence minOccurs="1" maxOccurs="1">
+					<choice>
+						<element name="GetAlertsRq"
+							type="tns:GetAlertsRqType" minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="PayCenterRq"
+							type="tns:PayCenterRqType" maxOccurs="1" minOccurs="1">
+						</element>
+						<element name="PayMandRq"
+							type="tns:PayMandRqType" minOccurs="1" maxOccurs="1" />
+						<element name="GetEnrRq" type="tns:GetEnrRqType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="BillEnrRq"
+							type="tns:BillEnrRqType" minOccurs="1" maxOccurs="1" />
+						<element name="PmtHistoryRq"
+							type="tns:PmtHistoryRqType" minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="MngAlertSubRq"
+							type="tns:MngAlertSubRqType" minOccurs="1" maxOccurs="1">
+						</element>
+
+						<element name="CategoryDetailsRq"
+							type="tns:CategoryDetailsRqType" minOccurs="1" maxOccurs="1">
+						</element>
+
+						<element name="GetAcctTypeSchemeRq"
+							type="tns:GetAcctTypeSchemeRqType" minOccurs="1" maxOccurs="1">
+						</element>
+
+						<element name="AccountTypeDetailsRq"
+							type="tns:AccountTypeDetailsRqType" minOccurs="1"
+							maxOccurs="1">
+						</element>
+
+						<element name="EStatementRq"
+							type="tns:EStatementRqType" minOccurs="1" maxOccurs="1">
+						</element>
+					</choice>
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="APaySvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<sequence minOccurs="1" maxOccurs="1">
+					<choice>
+						<element name="PayMandRs"
+							type="tns:PayMandRsType" minOccurs="1" maxOccurs="1" />
+						<element name="GetEnrRs" type="tns:GetEnrRsType"
+							minOccurs="1" maxOccurs="1" />
+						<element name="BillEnrRs"
+							type="tns:BillEnrRsType" minOccurs="1" maxOccurs="1" />
+						<element name="PmtHistoryRs"
+							type="tns:PmtHistoryRsType" minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="PayCenterRs"
+							type="tns:PayCenterRsType" minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="GetAlertsRs"
+							type="tns:GetAlertsRsType" minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="MngAlertSubRs"
+							type="tns:MngAlertSubRsType" minOccurs="1" maxOccurs="1">
+						</element>
+
+						<element name="CategoryDetailsRs"
+							type="tns:CategoryDetailsRsType" minOccurs="1" maxOccurs="1">
+						</element>
+
+						<element name="GetAcctTypeSchemeRs"
+							type="tns:GetAcctTypeSchemeRsType" minOccurs="1" maxOccurs="1">
+						</element>
+
+						<element name="AccountTypeDetailsRs"
+							type="tns:AccountTypeDetailsRsType" minOccurs="1"
+							maxOccurs="1">
+						</element>
+
+						<element name="EStatementRs"
+							type="tns:EStatementRsType" minOccurs="1" maxOccurs="1">
+						</element>
+					</choice>
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="BankSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="DebitRevRq" type="tns:DebitRevRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+					<element name="DebitAddRq" type="tns:DebitAddRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BankSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<sequence minOccurs="1" maxOccurs="1">
+
+					<choice>
+						<element name="DebitRevRs" type="tns:DebitRevRsType"
+							minOccurs="1" maxOccurs="1">
+						</element>
+						<element name="DebitAddRs" type="tns:DebitAddRsType"
+							minOccurs="1" maxOccurs="1">
+						</element>
+
+
+					</choice>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BatchExecuterRqType">
+		<sequence>
+
+			<element name="BatchInfo" type="tns:BatchInfoType"
+				minOccurs="1" maxOccurs="1"></element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="BatchRqType">
+		<sequence>
+			<element name="BatchRecordRq" type="tns:BatchRecordRqType"
+				minOccurs="1" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BatchRsType">
+		<sequence>
+			<element name="BatchRecordRs" type="tns:BatchRecordRsType"
+				minOccurs="1" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BatchExecuterRsType">
+		<sequence>
+			<element name="BatchInfo" type="tns:BatchInfoType"
+				minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BatchRecordRqType">
+		<sequence>
+			<element name="BatchPrcInfoRq" type="tns:BatchPrcInfoRqType"
+				minOccurs="1" maxOccurs="1" />
+			<choice minOccurs="1" maxOccurs="1">
+
+				<element name="BatchElementsInfoRq"
+					type="tns:BatchElementsInfoRqType" minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="ElementTypeStrtDel"
+					type="tns:StartDelimiterType" minOccurs="1" maxOccurs="1">
+				</element>
+
+				<element name="ElementTypeEndDel"
+					type="tns:EndDelimiterType" minOccurs="1" maxOccurs="1">
+				</element>
+
+
+			</choice>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="StartDelimiterType">
+		<sequence>
+			<element name="ElementTypeCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="ElementUsageCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="EndDelimiterType">
+		<complexContent>
+			<extension base="tns:StartDelimiterType"></extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BatchRecordRsType">
+		<sequence>
+			<element name="BatchPrcInfoRs" type="tns:BatchPrcInfoRsType"
+				minOccurs="1" maxOccurs="1" />
+			<choice maxOccurs="1" minOccurs="1">
+				<element name="BatchStatus" type="tns:StatusType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="BatchElementsInfoRs"
+					type="tns:BatchElementsInfoRsType" minOccurs="1" maxOccurs="1" />
+				<element name="ElementTypeStrtDel"
+					type="tns:StartDelimiterType" minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="ElementTypeEndDel"
+					type="tns:EndDelimiterType" minOccurs="1" maxOccurs="1">
+				</element>
+
+			</choice>
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="BatchPrcInfoRqType">
+		<complexContent>
+			<extension base="tns:BatchPrcInfoCmnType">
+				<sequence>
+
+
+
+					<element name="SignonRq" type="tns:SignonRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+				</sequence>
+
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+	<complexType name="BatchElementsInfoRsType">
+		<sequence>
+
+			<element name="ElementTypeCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="ElementUsageCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="ElementsStatus" minOccurs="0" maxOccurs="1"
+				type="tns:StatusType" />
+
+			<element name="ElementsRs" type="tns:ElementRsListType"
+				minOccurs="1" maxOccurs="1" />
+
+		</sequence>
+
+	</complexType>
+
+
+
+	<complexType name="BatchElementsInfoRqType">
+		<sequence>
+
+			<element name="ElementTypeCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="ElementUsageCode" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+
+
+			<element name="ElementsRq" type="tns:ElementRqtListType"
+				minOccurs="1" maxOccurs="1" />
+
+		</sequence>
+
+	</complexType>
+
+
+
+
+	<complexType name="ElementRqtListType">
+		<sequence>
+
+			<element name="ElementRq" type="tns:ElementRqDetailsType"
+				minOccurs="1" maxOccurs="unbounded" />
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="ElementRsListType">
+		<sequence>
+
+			<element name="ElementRs" type="tns:ElementRsDetailsType"
+				minOccurs="1" maxOccurs="unbounded" />
+
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="ElementType">
+		<sequence>
+
+			<element name="ElementDetails"
+				type="tns:ElementRqDetailsType" minOccurs="1" maxOccurs="1" />
+
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="ElementRsType">
+		<sequence>
+			<element name="ElementId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type">
+			</element>
+
+
+
+			<element name="ElementRsDetails"
+				type="tns:ElementRsDetailsType" minOccurs="1" maxOccurs="1" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="ElementRqDetailsType">
+		<complexContent>
+			<extension base="tns:BatchCmnElementType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="PaySvcRq" type="tns:PaySvcRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PresSvcRq" type="tns:PresSvcRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="BankSvcRq" type="tns:BankSvcRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="APaySvcRq" type="tns:APaySvcRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="RegSvcRq" type="tns:RegSvcRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="InstructSvcRq" type="tns:InstructSvcRqType"
+						minOccurs="1" maxOccurs="1"></element>
+					<element name="AMessageRq" type="tns:AMessageRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="AMessageRqType">
+		<sequence>
+
+			<element name="AMessageCode" type="tns:Identifier_Type"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="AMessageDesc" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<minLength value="1" />
+						<maxLength value="255" />
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="AMessageRsType">
+		<complexContent>
+			<extension base="tns:AMessageRqType"></extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ElementRsDetailsType">
+		<complexContent>
+			<extension base="tns:BatchCmnElementType">
+				<choice minOccurs="1" maxOccurs="1">
+
+					<element name="PaySvcRs" type="tns:PaySvcRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="PresSvcRs" type="tns:PresSvcRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="BankSvcRs" type="tns:BankSvcRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+					<element name="APaySvcRs" type="tns:APaySvcRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="RegSvcRs" type="tns:RegSvcRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+					<element name="InstructSvcRs" type="tns:InstructSvcRsType"
+						minOccurs="1" maxOccurs="1"></element>
+					<element name="AMessageRs" type="tns:AMessageRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+
+
+
+	<complexType name="BatchCmnElementType">
+		<sequence>
+			<element name="CustLangPref" type="tns:CustLangPrefOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="AMessage" type="tns:AMessageType"
+				minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+
+	<complexType name="AMessageType">
+		<sequence minOccurs="1" maxOccurs="1">
+			<any processContents="lax" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+
+
+
+
+
+	<complexType name="BatchPrcInfoRsType">
+		<complexContent>
+			<extension base="tns:BatchPrcInfoCmnType">
+				<sequence>
+
+
+
+					<element name="SignonRs" type="tns:SignonRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+				</sequence>
+
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="BatchPrcInfoCmnType">
+		<sequence>
+			<element name="BatchType" minOccurs="1" maxOccurs="1"
+				type="tns:BatchTypesOpenEnum" />
+
+			<element name="CurrentChunkIndex" type="long" maxOccurs="1"
+				minOccurs="0" />
+
+			<element name="TotalChunkCount" type="long" maxOccurs="1"
+				minOccurs="0" />
+
+			<element name="TotalElementsCount" maxOccurs="1"
+				minOccurs="0" type="long">
+
+			</element>
+			<element name="Signature" type="tns:SignatureType"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+			<element name="TotalElementsAmount" type="tns:CurAmtType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="OrgTotalElementsCount" type="long"
+				minOccurs="0">
+			</element>
+			<element name="OrgRqUID" type="tns:Identifier_Type"
+				minOccurs="0">
+			</element>
+			<element name="OrgFileName" type="string" minOccurs="0"
+				maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+
+
+
+
+	<complexType name="InstructSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="PmtInstructRq" type="tns:PmtInstructRqType"
+						minOccurs="1" maxOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="InstructSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="PmtInstructRs" type="tns:PmtInstructRsType"
+						minOccurs="1" maxOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="UtilSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="InvalidateCacheRq"
+						type="tns:InvalidateCacheRqType" minOccurs="1" maxOccurs="1">
+					</element>
+
+					<element name="GenerateOTPRq" type="tns:GenerateOTPRqType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+					<element name="ValidateOTPRq" type="tns:ValidateOTPRqType"
+						maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="UtilSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+
+					<element name="InvalidateCacheRs"
+						type="tns:InvalidateCacheRsType" minOccurs="1" maxOccurs="1">
+					</element>
+
+					<element name="GenerateOTPRs" type="tns:GenerateOTPRsType"
+						minOccurs="1" maxOccurs="1">
+					</element>
+
+					<element name="ValidateOTPRs" type="tns:ValidateOTPRsType"
+						maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="CashoutRqType">
+		<sequence>
+			<element name="PmtInfo" type="tns:PmtInfoType" maxOccurs="1"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="CashoutRsType">
+		<sequence>
+			<element name="PmtInfoVal" type="tns:PmtInfoValType"
+				maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="TerminalSvcRqType">
+		<complexContent>
+			<extension base="tns:SvcCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="MngInboxRq" type="tns:MngInboxRqType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetInboxRq" type="tns:GetInboxRqType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetTerminalProfileRq"
+						type="tns:GetTerminalProfileRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="ChangePinRq"
+						type="tns:ChangePinRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="KeyExchangeRq"
+						type="tns:KeyExchangeRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="AuthenticateRq"
+						type="tns:AuthenticateRqType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="ManageTicketRq"
+						type="tns:ManageTicketRqType" maxOccurs="1" minOccurs="1" />
+					<element name="GetCertificateRq" type="tns:GetCertificateRqType" maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+
+
+
+	</complexType>
+
+	<complexType name="TerminalSvcRsType">
+		<complexContent>
+			<extension base="tns:SvcRsCommonType">
+				<choice minOccurs="1" maxOccurs="1">
+					<element name="MngInboxRs" type="tns:MngInboxRsType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetInboxRs" type="tns:GetInboxRsType"
+						maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="GetTerminalProfileRs"
+						type="tns:GetTerminalProfileRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="ChangePinRs"
+						type="tns:ChangePinRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="KeyExchangeRs"
+						type="tns:KeyExchangeRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="AuthenticateRs"
+						type="tns:AuthenticateRsType" maxOccurs="1" minOccurs="1">
+					</element>
+					<element name="ManageTicketRs"
+						type="tns:ManageTicketRsType" maxOccurs="1" minOccurs="1" />
+
+					<element name="GetCertificateRs" type="tns:GetCertificateRsType" maxOccurs="1" minOccurs="1"></element>
+				</choice>
+			</extension>
+		</complexContent>
+
+
+
+	</complexType>
+
+
+
+
+
+	<complexType name="ValidateOTPRqType">
+		<sequence>
+			<element name="ValidateOTPInfo"
+				type="tns:ValidateOTPInfoType" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ManageTicketRqType">
+		<sequence>
+			<element name="OptType" type="tns:OptTypeEnum" maxOccurs="1"
+				minOccurs="1" />
+			<element name="BankId" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0" />
+			<element name="TicketData" type="tns:TicketDataType"
+				maxOccurs="1" minOccurs="1" />
+			<element name="AccountInfo" type="tns:TicketAcctInfoType"
+				maxOccurs="1" minOccurs="1" />
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ManageTicketRsType">
+		<sequence>
+			<element name="OptType" type="tns:OptTypeEnum" maxOccurs="1"
+				minOccurs="1" />
+			<element name="BankId" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0" />
+			<element name="TicketData" type="tns:TicketDataType"
+				maxOccurs="1" minOccurs="1" />
+			<element name="AccountInfo" type="tns:TicketAcctInfoType"
+				maxOccurs="1" minOccurs="0" />
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TicketDataType">
+		<sequence>
+			<element name="FawryCustRefNo" type="string" maxOccurs="1"
+				minOccurs="1" />
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="0" />
+			<element name="CurAmt" type="tns:CurAmtType" maxOccurs="1"
+				minOccurs="0" />
+			<element name="TxnDate" type="dateTime" minOccurs="0"
+				maxOccurs="1" />
+			<element name="TicketType" type="string" maxOccurs="1"
+				minOccurs="1" />
+			<element name="ContactNumber" type="string" maxOccurs="1"
+				minOccurs="0" />
+			<element name="TicketTitle" type="string" maxOccurs="1"
+				minOccurs="0" />
+			<element name="TicketDesc" type="string" maxOccurs="1"
+				minOccurs="0" />
+			<element name="TicketNumber" type="string" maxOccurs="1"
+				minOccurs="0" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="TicketAcctInfoType">
+		<sequence>
+			<element name="AcctCode" type="string" maxOccurs="1"
+				minOccurs="1" />
+			<element name="DeviceId" type="string" maxOccurs="1"
+				minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ValidateOTPInfoType">
+		<sequence>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="AcctId" type="string" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="OTPPassword" type="string" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ValidateOTPRsType">
+		<sequence>
+			<element name="ValidateOTPInfo"
+				type="tns:ValidateOTPInfoType"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="AuthenticateRqType">
+		<sequence>
+			<element name="AcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="AuthenticateRsType">
+		<sequence>
+			<element name="AccInfo" type="tns:AcctInfoType" maxOccurs="1"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MngLookupRqType">
+		<sequence>
+			<element name="LookupData" type="tns:LookupDataType"
+				maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="LookupDataType">
+		<sequence>
+			<element name="OptType" type="tns:OptTypeEnum" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="LookupType" minOccurs="1" maxOccurs="1"
+				type="tns:LookupTypeOpenEnum" />
+			<element name="LookupsInfo" type="tns:LookupsType"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="MngLookupRsType">
+		<sequence>
+			<element name="LookupData" type="tns:LookupDataType"
+				maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="LookupsType">
+		<sequence>
+			<element name="Lookup" type="tns:LookupType"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="LookupType">
+		<sequence>
+			<element name="LookupCode" minOccurs="1" maxOccurs="1"
+				type="tns:LookupCodeType" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:NamePrimLangType" />
+			<element name="NameSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:NameSecLangType" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:DescPrimLangType" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:DescSecLangType" />
+			<element name="IsDefault" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+			<element name="LookupStatus" minOccurs="0" maxOccurs="1"
+				type="tns:LookupStatusOpenEnum" />
+		</sequence>
+
+	</complexType>
+
+	<complexType name="BatchCloseRqType">
+		<sequence>
+			<element name="OptType" type="string" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="BankId" type="string" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="MerchantInfo" type="tns:MerchantInfoType"
+				maxOccurs="1" minOccurs="1"></element>
+			<element name="BatchData" type="tns:BatchDataType"
+				maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BatchDataType">
+		<sequence>
+			<element name="BatchId" type="integer" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="SaleTrxCount" type="integer" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="SaleTotalAmt" type="decimal" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="RefundTrxCount" type="integer" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="RefundTotalAmt" type="decimal" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BatchCloseRsType">
+		<sequence>
+			<element name="OptType" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="BankId" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="BatchData" type="tns:BatchDataType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="MerchantInfo" type="tns:MerchantInfoType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="RRN" type="string" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetMerchantCategoryRqType">
+		<sequence>
+			<element name="RecCtrlln" type="tns:RecCtrlInType" maxOccurs="1" minOccurs="0"></element>
+			<element name="CustIds" type="tns:CustIdsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetMerchantCategoryRsType">
+		<sequence>
+			<element name="MerchantCategoryCodes" type="tns:MerchantCategoryCodesType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MerchantCategoryCodesType">
+		<sequence>
+			<element name="MerchantCategoryCode" type="tns:MerchantCategoryCodeType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MerchantCategoryCodeType">
+		<sequence>
+			<element name="CategoryCode" minOccurs="1" maxOccurs="1"
+				type="tns:LookupCodeType" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:NamePrimLangType" />
+			<element name="NameSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:NameSecLangType" />
+
+
+
+			<element name="Status" minOccurs="0" maxOccurs="1"
+				type="tns:LookupStatusOpenEnum" />
+			<element name="MerchantDetails" type="tns:MerchantDetailsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MerchantDetailsType">
+		<sequence>
+			<element name="Merchant" type="tns:MerchantType" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MerchantType">
+		<sequence>
+			<element name="MerchantName" type="string" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillersStructureRsType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" minOccurs="1" maxOccurs="1"></element>
+            <element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+            <element name="Services" type="tns:ServicesType"
+				minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ServicesType">
+		<sequence>
+			<element name="ServiceRec" type="tns:ServiceRecType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ServiceRecType">
+		<sequence>
+			<element name="ServiceType" type="tns:Identifier_Type" maxOccurs="1" minOccurs="1"></element>
+			<element name="ServiceName" type="tns:Identifier_Type" maxOccurs="1" minOccurs="1"></element>
+			<element name="BillersRec" type="tns:BillersRecType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillersRecType">
+		<sequence>
+			<element name="BillerInfo" type="tns:BillerRecInfoType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillerRecInfoType">
+		<sequence>
+			<element name="BillerCode" type="string" maxOccurs="1" minOccurs="1"></element>
+			<element name="BillerName" type="tns:Identifier_Type" maxOccurs="1" minOccurs="1"></element>
+
+			<element name="BillTypesRec" type="tns:BillTypesRecType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillTypesRecType">
+		<sequence>
+			<element name="BillTypeInfo" type="tns:BillTypeInfoType"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillTypeInfoType">
+		<sequence>
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Name" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="IsHidden" minOccurs="0" maxOccurs="1"
+				type="boolean">
+			</element>
+			<element name="Type" minOccurs="0" maxOccurs="1"
+				type="string">
+			</element>
+			<element name="PmtType" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="AcceptBulkVouch" minOccurs="0" maxOccurs="1" type="boolean"/>
+			<element name="PaymentType" type="string" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+
+	</complexType>
+
+	<complexType name="BillersStructureRqType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" maxOccurs="1" minOccurs="0"></element>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType" maxOccurs="1" minOccurs="0"></element>
+			<element name="DeliveryMethod"
+				type="tns:DeliveryMethodOpenEnum" maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="ProfileCode" type="tns:Identifier_Type" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+
+    <complexType name="GetCertificateRsType">
+    	<sequence>
+    		<element name="CertificateData" type="tns:CertificateDataType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="GetCertificateRqType">
+    	<sequence>
+    		<element name="Type" type="string"  minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CertificateDataType">
+    	<sequence>
+    		<element name="Type" type="string"  minOccurs="0" maxOccurs="1"></element>
+    		<element name="Data" type="string"  minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+	<include schemaLocation="CoreEnum.xsd"></include>
+	
+	<complexType name="AccountTypeDetailsRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="CSP" minOccurs="1"
+				type="tns:Identifier_Type">
+			</element>
+			<choice>
+				<element name="FetchAll" minOccurs="0" maxOccurs="1"
+					type="boolean" />
+				<element name="AcctTypes" minOccurs="0" maxOccurs="1"
+					type="tns:AcctTypesType" />
+			</choice>
+			<element name="CustType" type="tns:CustTypeOpenEnum" maxOccurs="1" minOccurs="0"></element>
+			<element name="AccountInfo" type="tns:AccountInfoType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="AcctTypesType">
+		<sequence>
+			<element name="AcctType" minOccurs="1" maxOccurs="unbounded"
+				type="tns:AcctTypeOpenEnum" />
+		</sequence>
+	</complexType>
+
+	<complexType name="AccountTypeDetailsRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="CSP" minOccurs="1" type="tns:Identifier_Type">
+			</element>
+            <element name="AccountTypeDetailsRecs" minOccurs="0" maxOccurs="1" type="tns:AccountTypeDetailsRecsType" />
+        </sequence>
+	</complexType>
+
+	<complexType name="AccountTypeDetailsRecsType">
+		<sequence>
+			<element name="AcctTypeDetailsRec" minOccurs="0" maxOccurs="unbounded"
+				type="tns:AcctTypeDetailsRecType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="AcctTypeDetailsRecType">
+		<sequence>
+			<element name="AcctTypeCode" minOccurs="1" maxOccurs="1"
+				type="tns:AcctTypeOpenEnum" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="AcctTypeStatus" minOccurs="1" maxOccurs="1"
+				type="tns:AcctTypeStatusOpenEnum" />
+			<element name="PmtSchemeCode" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="PaymentBTC" type="long" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="BalanceBTC" type="long" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="ActivatonCriteria"
+				type="tns:ActivatonCriteriaOpenEnum" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="IsDefault" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsAddEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsUpdateEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsDeleteEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsCashoutEnabled" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsFundLoadEnabled" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsCreateEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsBalanceInqEnabled" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsPmtEnabled" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsPinRequired" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsKYCRequired" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsThreeDSecuredEnabled" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="ThreeDSecuredURL" minOccurs="0" maxOccurs="1"
+				type="string" />
+			<element name="TransferTOAcctTypes" minOccurs="0"
+				maxOccurs="1" type="tns:TransferTOAcctTypesType" />
+			<element name="ExcludedBillTypes" minOccurs="0"
+				maxOccurs="1" type="tns:BillTypeCodesType" />
+			<element name="MerchantProfiles" minOccurs="0" maxOccurs="1"
+				type="tns:AcctTypeMerchantProfilesType" />
+			<element name="IsPurchaseEnabled" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="MaxAccountsToAdd" type="long" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="CustTypes" type="tns:CustTypesType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="PANs" minOccurs="0" maxOccurs="1"
+				type="string" />
+			<element name="InstallmentRules"
+				type="tns:InstallmentRulesType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IncludedBillTypes"
+				type="tns:BillTypeCodesType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsSupportOffUsInst" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="OnUsIncInstRate" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="OffUsIncInstRate" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsOTPRequired" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AcquireBankCode" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="EnableSelfRegAuth" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="EnableSelfRegLink" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="InputMethod" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsEncrypted" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsPrintEnable" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="SubAccountTypeDetailsRecs"
+				type="tns:AccountTypeDetailsRecsType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsChangePinEnable" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsResetPinEnable" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsRequestReplaceEnable" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsSubmitCardRqEnable" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="IsDeactivateEnable" type="boolean"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="IsBlockEnable" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IsInstallmentIntWithPrincipalAmt" type="boolean" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="AcctTypeMerchantProfilesType">
+		<sequence>
+			<element name="MerchantProfile" minOccurs="1" maxOccurs="unbounded"
+				type="tns:MerchantProfileType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="MerchantProfileType">
+		<sequence>
+			<element name="MerchantProfileId" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="MerchantInfo" minOccurs="1" maxOccurs="1"
+				type="tns:MerchantInfoType" />
+			<element name="BillTypeCodes" minOccurs="0" maxOccurs="1"
+				type="tns:BillTypeCodesType" />
+			<element name="PmtType" type="tns:PmtTypeEnum" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="TransferTOAcctTypesType">
+		<sequence>
+			<element name="AcctTypeCode" minOccurs="1" maxOccurs="unbounded"
+				type="tns:AcctTypeOpenEnum" />
+		</sequence>
+	</complexType>
+
+
+	<complexType name="CustTypesType">
+		<sequence>
+			<element name="CustType" type="tns:CustTypeOpenEnum" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	
+	
+</schema>

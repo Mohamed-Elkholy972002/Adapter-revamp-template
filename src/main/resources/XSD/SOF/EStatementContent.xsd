@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+	<complexType name="EStatementRqType">
+		<sequence>
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="EStatementSearchData" minOccurs="0"
+				maxOccurs="1" type="tns:EStatementSearchDataType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="EStatementSearchDataType">
+		<sequence>
+
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="1"></element>
+
+			<element name="AcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="1"></element>
+
+			<element name="ActionType" maxOccurs="unbounded"
+				minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="BillTypes" type="tns:BillTypeCodesType"
+				maxOccurs="1" minOccurs="0"></element>
+
+			<element name="StatementDate" type="date" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="FromDate" type="date" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="ToDate" type="date" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="IsReturnSubAcctActions" type="boolean"
+				minOccurs="0" maxOccurs="1" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="EStatementRsType">
+		<sequence>
+
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="OpeningBalance" type="tns:BalanceType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="ClosingBalance" type="tns:BalanceType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="PmtActions" minOccurs="0" maxOccurs="1"
+				type="tns:PmtActionsType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtActionsType">
+		<sequence>
+			<element name="PmtAction" minOccurs="1" maxOccurs="unbounded"
+				type="tns:PmtActionType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtActionType">
+		<sequence>
+			<element name="ActionName" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="ActionDate" type="date" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="ActionNature" minOccurs="0" maxOccurs="1"
+				type="tns:C128_Type" />
+
+			<element name="CompositeCurAmt"
+				type="tns:CompositeCurAmtType" minOccurs="0" maxOccurs="unbounded">
+			</element>
+
+			<element name="FCRN" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BillingAcct" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+
+			<element name="Desc" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="BillTypeCode" type="long" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="BillTypeName" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="ReconStatus" type="tns:Identifier_Type"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="AcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="TerminalInfo" type="tns:TerminalInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="BalanceBefore" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="BalanceAfter" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="ActionDt" type="dateTime" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="ExtraBillingAcctKeys"
+				type="tns:ExtraBillingAcctKeysType" maxOccurs="1" minOccurs="0"></element>
+			<element name="LoyaltyInfo" type="tns:LoyaltyInfoType"
+				maxOccurs="1" minOccurs="0"></element>
+
+		</sequence>
+	</complexType>
+
+
+
+</schema>

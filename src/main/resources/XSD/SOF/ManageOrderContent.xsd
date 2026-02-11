@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+
+	<complexType name="MngOrderRqType">
+		<sequence>
+			<element name="OrderData" minOccurs="1" maxOccurs="1"
+				type="tns:OrderDataType" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="MngOrderRsType">
+		<sequence>
+			<element name="OrderData" minOccurs="1" maxOccurs="1"
+				type="tns:OrderDataType" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="GetOrdersRqType">
+		<sequence>
+			<element name="OrderSearchData" minOccurs="1" maxOccurs="1"
+				type="tns:OrderSearchDataType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="GetOrdersRsType">
+		<sequence>
+			<element name="OrderSearchData" minOccurs="0" maxOccurs="1"
+				type="tns:OrderSearchDataType" />
+
+			<element name="OrderDataRsRecs" type="tns:OrdersRecsType"
+				maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="OrderDataType">
+		<sequence>
+
+			<element name="OptType" minOccurs="1" maxOccurs="1"
+				type="tns:OptTypeEnum">
+			</element>
+
+			<element name="OrderNumber" minOccurs="0"
+				type="tns:Identifier_Type" />
+
+			<element name="OrderStatus" type="tns:OrderStatusOpenEnum"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="Amt" type="tns:CurAmtType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="ShippingAmt" type="tns:CurAmtType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="TaxAmt" type="tns:CurAmtType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="MerchantId" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type" />
+
+			<element name="MerchantName" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256"></maxLength>
+					</restriction>
+				</simpleType>
+
+			</element>
+
+			<element name="MarketPlaceId" minOccurs="0" maxOccurs="1"
+				type="tns:Identifier_Type" />
+
+			<element name="PaymentOption" maxOccurs="1" minOccurs="0"
+				type="tns:PaymentOptionOpenEnum">
+			</element>
+
+			<element name="KYCRequired" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="DeliveryType" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="100"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="DeliveryStatus" maxOccurs="1"
+				minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="100"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="CustomerNote" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+
+			</element>
+
+			<element name="IsGift" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+
+			<element name="GiftMsg" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="512"></maxLength>
+					</restriction>
+				</simpleType>
+
+			</element>
+
+			<element name="ShippingAddress" minOccurs="0" maxOccurs="1"
+				type="tns:AddressType" />
+
+			<element name="BillingAddress" minOccurs="0" maxOccurs="1"
+				type="tns:AddressType" />
+
+			<element name="PmtTransIds" type="tns:PmtTransIdsType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="OrderRefNumber" minOccurs="0"
+				type="tns:Identifier_Type" />
+
+			<element name="MerchantRefNumber" minOccurs="0"
+				type="tns:Identifier_Type" />
+
+			<element name="CourierRefNumber" minOccurs="0"
+				type="tns:Identifier_Type" />
+
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="0">
+			</element>
+
+			<element name="Items" type="tns:ItemsType" minOccurs="0"
+				maxOccurs="1" />
+			<element name="FeesAmt" type="tns:CurAmtType" maxOccurs="1" minOccurs="0"></element>
+			<element name="OderDate" type="dateTime" maxOccurs="1" minOccurs="0"></element>
+			<element name="TrackingURL" type="tns:C512_Type" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="OrderSearchDataType">
+		<sequence>
+
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+
+			<element name="OrderNumber" minOccurs="0" type="tns:Identifier_Type" />
+
+			<element name="FromDate" minOccurs="0" maxOccurs="1" type="date" />
+
+			<element name="ToDate" minOccurs="0" maxOccurs="1" type="date" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="OrdersRecsType">
+		<sequence>
+			<element name="OrderRec" type="tns:OrderDataType" minOccurs="1"
+				maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+
+</schema>

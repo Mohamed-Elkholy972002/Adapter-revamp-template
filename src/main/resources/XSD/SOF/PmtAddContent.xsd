@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+
+	<complexType name="PmtAddRqType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="PmtInfo" type="tns:PmtInfoType" minOccurs="1"
+				maxOccurs="unbounded">
+			</element>
+			<element minOccurs="0" maxOccurs="1" name="PromoCode"
+				type="tns:PromoCodeType">
+			</element>
+			<element name="AuthInfo" type="tns:AuthInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="OptType" type="tns:PmtAddOptTypeEnum"
+				maxOccurs="1" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="PmtAddRsType">
+		<sequence>
+			<element name="CustId" type="tns:CustIdType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+
+			<element name="DiscountInfo" type="tns:DiscountInfoType"
+				maxOccurs="1" minOccurs="0"></element>
+			<element name="PmtInfoVal" type="tns:PmtInfoValType"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PmtInfoValType">
+		<sequence>
+			<element name="status" type="tns:StatusType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="PmtTransId" type="tns:PmtTransIdType"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+			<element name="PmtInfo" type="tns:PmtInfoType" minOccurs="1"
+				maxOccurs="1">
+			</element>
+
+			<element name="AuthInfo" type="tns:AuthInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="VouchInfo" type="tns:VouchInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="ExtraReceipts" type="tns:ExtraReceiptsType"
+				maxOccurs="1" minOccurs="0"></element>
+				
+		  <element name="LoanAcctRec" type="tns:LoanAcctInfoType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+</schema>

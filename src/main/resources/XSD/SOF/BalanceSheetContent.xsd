@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+<include schemaLocation="CoreLib.xsd"></include>
+
+
+	<complexType name="BalanceSheetRq">
+		<sequence>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="AcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="SheetDate" type="date" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="IncludeSubAcct" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+
+			<element name="BatchNumber" type="string" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>    
+
+
+  <complexType name="BalanceSheetRsType">
+    	<sequence>
+    		<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="OpeningBalance" type="tns:BalanceType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="ClosingBalance" type="tns:BalanceType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="BalanceDetails" type="tns:BalanceDetailsType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="AppParamVersions" type="tns:AppVersionsType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="SubAcctBalanceSheetInfo"
+    			type="tns:SubAcctBalanceSheetInfoType" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="BatchNumber" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+  </complexType>
+
+    <complexType name="BalanceDetailsType">
+    	<sequence>
+    		<element name="ActionName" type="tns:ActionNameType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="ActionType" type="tns:Identifier_Type"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+
+    		<element name="ActionNature" type="tns:Identifier_Type"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+    		<element name="Amount" type="double" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="TotalTrxAmount" type="double" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="MDRAmount" type="double" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="TotalTrxLabel" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="TotalMDRLabel" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    
+     <simpleType name="ActionNameType">
+		<restriction base="string">
+			<maxLength value="128"></maxLength>
+		</restriction>
+	</simpleType>
+
+
+
+     <complexType name="SubAcctBalanceSheetInfoType">
+     	<sequence>
+     		<element name="SubAcctsBalanceSheet" type="tns:SubAcctsBalanceSheetType" maxOccurs="unbounded" minOccurs="0"></element>
+     	</sequence>
+     </complexType>
+
+     <complexType name="SubAcctsBalanceSheetType">
+     	<sequence>
+     		<element name="SubAcctBalanceSheet" type="tns:SubAcctBalanceSheetType" maxOccurs="1" minOccurs="0"></element>
+     	</sequence>
+     </complexType>
+
+     <complexType name="SubAcctBalanceSheetType">
+     	<sequence>
+     		<element name="Alias" type="tns:AliasType" maxOccurs="1"
+     			minOccurs="1">
+     		</element>
+     		<element name="OpeningBalance" type="tns:BalanceType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="ClosingBalance" type="tns:BalanceType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="BalanceDetails" type="tns:BalanceDetailsType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="AppParamVersions" type="tns:AppVersionsType"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+     	</sequence>
+     </complexType>
+</schema>

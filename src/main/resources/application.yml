@@ -1,0 +1,25 @@
+server:
+  port: 8018
+spring:
+  application:
+    name: adapter-template
+  config:
+    import:
+      - "classpath:adapter/Configuration/adapterConfiguration.yml"
+      - "classpath:adapter/StatusCode/adapterStatusCodeConfiguration.yml"
+      - "classpath:adapter/web/adapterWebServiceConfigs.yml"
+      - "classpath:adapter/generalConfiguration/generalConfiguration.yml"
+      - "classpath:adapter/BTC/BTcConfiguration.yml"
+
+
+
+
+logging:
+  level:
+    org.springframework: info
+    com.fawry: info
+    root: info
+xsd:
+  schema:
+    path: classpath:XSD/SOF/SOFOnlineService_schema.xsd
+

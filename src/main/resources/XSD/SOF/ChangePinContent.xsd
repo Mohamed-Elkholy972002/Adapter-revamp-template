@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+<include schemaLocation="CoreLib.xsd"></include>
+
+
+	 <complexType name="ChangePinRqType">
+    	<sequence>
+    		<element name="OptType" maxOccurs="1" minOccurs="0" type="tns:ChangePinOptTypeOpenEnum"></element>
+    		<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="AcctInfo" type="tns:AcctInfoType"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+    		<element name="NewPin" type="base64Binary" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+	 </complexType>
+
+    <complexType name="ChangePinRsType">
+    	<sequence>
+    		<element name="OptType" type="tns:ChangePinOptTypeOpenEnum"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="AcctInfo" type="tns:AcctInfoType"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+    		<element name="ExternalSOFCode" type="tns:Identifier_Type"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="NewPin" type="base64Binary" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+
+</schema>

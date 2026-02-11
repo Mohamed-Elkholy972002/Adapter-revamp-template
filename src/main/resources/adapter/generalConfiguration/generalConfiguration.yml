@@ -1,0 +1,6 @@
+general-config:
+  language: "en"
+#  secretKey : "e3c59f40-4c8b-42bc-be08-0121e85fc664"
+#  serviceCodeApproveTransaction : "submitPurchaseRq"
+#  serviceCodeReverseTransaction : "reverseRq"
+#  algorithm : "SHA256"

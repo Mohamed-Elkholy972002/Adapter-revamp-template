@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	<include schemaLocation="CoreEnum.xsd"></include>
+	<complexType name="GetTerminalProfileRqType">
+		<sequence>
+			<element name="AppVersions" type="tns:AppVersionsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="AcctInfo" type="tns:AcctInfoType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+
+			<element name="TerminalModelNum" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="TerminalOsVersion" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="GetTerminalProfileRsType">
+		<sequence>
+
+			<element name="AppVersions" type="tns:AppVersionsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="AvailVersions" type="tns:AppVersionsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="AcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="TerminalProfile"
+				type="tns:TerminalProfileType" maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="PrepaidCCardAcct"
+				type="tns:AccountMerchantInfoType" maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+			<element name="PostpaidCCardAcct"
+				type="tns:AccountMerchantInfoType" maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+			<element name="PurchaseCCardAcct"
+				type="tns:AccountMerchantInfoType" maxOccurs="unbounded" minOccurs="0">
+			</element>
+
+			<element name="SubAccts" type="tns:SubAcctsType" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="AcctTerminals" type="tns:AcctTerminalsType" maxOccurs="1" minOccurs="0"/>
+			<element name="PurchasePmtMethods" type="tns:PurchasePmtMethodsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+
+
+
+	
+
+	<complexType name="TerminalProfileType">
+		<sequence>
+			<element name="ProfileData" type="tns:ProfileDataType"
+				maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="ProfileDataType">
+		<sequence>
+			<element name="AppType" type="tns:AppTypeOpenEnum" maxOccurs="1"
+				minOccurs="0">
+			</element>
+
+			<element name="ParametersVersion" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+
+
+			<element name="ProfileParameters" type="tns:ProfileParametersType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="ProfileParametersType">
+		<sequence>
+			<element name="ProfileParameter" type="tns:ProfileParameterType"
+				minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ProfileParameterType">
+		<sequence>
+			<element name="Key" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Value" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="1024"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="SubAcctsType">
+		<sequence>
+			<element name="SubAcct" type="tns:SubAcctType"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SubAcctType">
+		<sequence>
+			<element name="SubAcctId" type="tns:SubAcctIdType" maxOccurs="1" minOccurs="1"></element>
+			<element name="SubAcctAlias" type="tns:SubAcctAliasType" maxOccurs="1" minOccurs="0"></element>
+			<element name="MerchantInfo" type="tns:MerchantInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="BtcCode" type="string" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element name="installmentPlans"
+				type="tns:InstallmentRulesType" maxOccurs="1" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+	<simpleType name="SubAcctIdType">
+		<restriction base="string">
+		<maxLength value="36"></maxLength>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SubAcctAliasType">
+		<restriction base="string">
+		<maxLength value="128"></maxLength>
+		</restriction>
+	</simpleType>
+	<complexType name="PurchasePmtMethodsType">
+	<sequence>
+	<element name="PurchasePmtMethod"
+		type="tns:PurchasePmtMethodType" minOccurs="1" maxOccurs="unbounded"></element>
+	</sequence>
+</complexType>
+
+	<complexType name="PurchasePmtMethodType">
+		<sequence>
+			<element name="PmtMethodName" maxOccurs="1" minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="PmtSchemeCode" minOccurs="0" maxOccurs="1" type="tns:Identifier_Type" />
+			<element name="SubAcctId" type="tns:SubAcctIdType" maxOccurs="1" minOccurs="0"></element>
+			<element name="SubAcctType" minOccurs="0" maxOccurs="1" type="tns:AcctTypeOpenEnum" />
+			<element name="SubAcctAlias" type="tns:SubAcctAliasType" maxOccurs="1" minOccurs="0"></element>
+			<element name="InitBTC" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="16"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="EndBTC" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="16"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="RefundBTC" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="16"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SubPmtMethods"
+				type="tns:PurchasePmtMethodsType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+</schema>

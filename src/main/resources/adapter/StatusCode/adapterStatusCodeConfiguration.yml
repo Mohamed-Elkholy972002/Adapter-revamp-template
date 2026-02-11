@@ -1,0 +1,51 @@
+adapters-status-code-configs:
+  Configs:
+    400:
+      fawryCode: "29"
+      statusDesc: "Failed"
+    timeout:
+      fawryCode: "81"
+      statusDesc: "timeout"
+    default:
+      fawryCode: "26"
+      statusDesc: "General Error"
+    "1000":
+      fawryCode: "200"
+      statusDesc: "Success"
+    "1009":
+      fawryCode: "21007"
+      statusDesc: "You are not authorized to access this service."
+    "1011":
+      fawryCode: "51144"
+      statusDesc: "Data validation error"
+    "1008":
+      fawryCode: "29115"
+      statusDesc: "This service not available, please try again later"
+    "1001":
+      fawryCode: "12053"
+      statusDesc: "Customer is not found."
+    "1090":
+      fawryCode: "85001"
+      statusDesc: "Installment Rules Not Valid Form CSP Error"
+    "1013":
+      fawryCode: "13"
+      statusDesc: "Duplicate <RqUID>."
+    "1003":
+      fawryCode: "31004"
+      statusDesc: "Insufficient Funds."
+    "1004":
+      fawryCode: "33003"
+      statusDesc: "Missing OTP Configuration."
+    "1007":
+      fawryCode: "97007"
+      statusDesc: "Duplicate Reference Number"
+    "1020":
+      fawryCode: "21038"
+      statusDesc: "The original transaction with FCRN not found"
+    "1030":
+      fawryCode: "23002"
+      statusDesc: "Transaction already Confirmed."
+    "1040":
+      fawryCode: "23001"
+      statusDesc: "Invalid transaction."
+

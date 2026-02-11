@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="FAWRYContent.xsd">
+	</include>
+	<complexType name="FAWRYType">
+		<sequence>
+			<choice minOccurs="1" maxOccurs="1">
+				<element name="Request" type="tns:RequestType" maxOccurs="1"
+					minOccurs="0"></element>
+				<element name="Response" type="tns:ResponseType"
+					maxOccurs="1" minOccurs="0"></element>
+			</choice>
+			<element name="Signature" type="tns:SignatureType"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="FAWRY" type="tns:FAWRYType"></element>
+
+	<complexType name="RequestType">
+		<sequence>
+			<element name="SignonRq" type="tns:SignonRqType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="IsRetry" type="boolean" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<choice minOccurs="1" maxOccurs="1">
+				<element name="APaySvcRq" type="tns:APaySvcRqType"
+					minOccurs="1" maxOccurs="1" />
+				<element name="PaySvcRq" type="tns:PaySvcRqType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="PresSvcRq" type="tns:PresSvcRqType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="BankSvcRq" type="tns:BankSvcRqType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="ReconSvcRq" type="tns:ReconSvcRqType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+
+				<element name="BatchSvcRq" type="tns:BatchSvcRqType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+
+				<element name="RegSvcRq" type="tns:RegSvcRqType"
+					minOccurs="1" maxOccurs="1" />
+
+				<element name="UtilSvcRq" type="tns:UtilSvcRqType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="TerminalSvcRq" type="tns:TerminalSvcRqType"
+					minOccurs="1" maxOccurs="1"></element>
+			</choice>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="ResponseType">
+		<sequence>
+			<element name="SignonRs" type="tns:SignonRsType"
+				minOccurs="1" maxOccurs="1">
+			</element>
+			<choice minOccurs="1" maxOccurs="1">
+				<element name="PresSvcRs" type="tns:PresSvcRsType"
+					maxOccurs="1">
+				</element>
+				<element name="PaySvcRs" type="tns:PaySvcRsType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="BankSvcRs" type="tns:BankSvcRsType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="ReconSvcRs" type="tns:ReconSvcRsType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="BatchSvcRs" type="tns:BatchSvcRsType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="APaySvcRs" type="tns:APaySvcRsType"
+					minOccurs="1" maxOccurs="1" />
+
+				<element name="RegSvcRs" type="tns:RegSvcRsType"
+					minOccurs="1" maxOccurs="1" />
+
+				<element name="UtilSvcRs" type="tns:UtilSvcRsType"
+					minOccurs="1" maxOccurs="1">
+				</element>
+				<element name="TerminalSvcRs" type="tns:TerminalSvcRsType"
+					maxOccurs="1" minOccurs="1"></element>
+			</choice>
+
+		</sequence>
+	</complexType>
+
+</schema>

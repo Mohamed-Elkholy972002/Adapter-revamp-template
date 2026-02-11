@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+<include schemaLocation="CoreLib.xsd"></include>
+	<complexType name="CategoryDetailsRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="1" maxOccurs="1"></element>
+            
+            <element name="FetchAll" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="CategoriesIds" minOccurs="0" maxOccurs="1"
+				type="tns:CategoriesIdsType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="CategoriesIdsType">
+		<sequence>
+			<element name="CategoryCode" minOccurs="1" maxOccurs="unbounded" type="tns:Identifier_Type"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="CategoryDetailsRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1"></element>
+            <element name="CategoryDetailsRecs" minOccurs="0"
+				maxOccurs="1" type="tns:CategoryDetailsRecsType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="CategoryDetailsRecsType">
+		<sequence>
+			<element name="CategoryDetailsRec" minOccurs="1" maxOccurs="unbounded" type="tns:CategoryDetailsRecType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="CategoryDetailsRecType">
+		<sequence>
+			<element name="CategoryCode" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="CategoryStatus" minOccurs="1" maxOccurs="1"
+				type="tns:CategoryStatusOpenEnum" />
+			<element name="IsDefault" type="boolean" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="VelocityMeasures" minOccurs="0" maxOccurs="1"
+				type="tns:VelocityMeasuresType" />
+			<element name="CategoryBillTypes" minOccurs="0"
+				maxOccurs="1" type="tns:CategoryBillTypes" />
+			<element name="ProfileCode" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="32"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="AllowedCustTypes" type="tns:AllowedCustTypesType" maxOccurs="1" minOccurs="0"></element>
+		    <element name="CategoryType"  maxOccurs="1" minOccurs="0">
+	     <simpleType>
+	    	<restriction base="string">
+			<maxLength value="32"></maxLength>
+		   </restriction>
+	    </simpleType>
+		    </element>
+			
+		</sequence>
+	</complexType>
+
+	<complexType name="CategoryBillTypes">
+			<sequence>
+				<element name="BillTypeCode" minOccurs="1" maxOccurs="unbounded" type="long" />
+			</sequence>
+	</complexType>
+	
+	<complexType name="VelocityMeasuresType">
+		<sequence>
+			<element name="VelocityMeasure" minOccurs="1" maxOccurs="unbounded" type="tns:VelocityMeasureType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="VelocityMeasureType">
+		<sequence>
+			<element name="ParameterCode" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="1" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="IsDefault" type="boolean" maxOccurs="1" minOccurs="1"/>
+			<element name="VelocityCriterias" minOccurs="0" maxOccurs="1"
+				type="tns:VelocityCriteriasType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="VelocityCriteriasType">
+		<sequence>
+			<element name="VelocityCriteria" minOccurs="1" maxOccurs="unbounded" type="tns:VelocityCriteriaType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="VelocityCriteriaType">
+		<sequence>
+			<element name="BillType" minOccurs="0" maxOccurs="1"
+				type="long" />
+			<element name="BankAcctType" minOccurs="0" maxOccurs="1"
+				type="tns:AcctTypeOpenEnum" />
+				<element name="VelocityPeriodicMeasure" minOccurs="0" maxOccurs="1" type="tns:VelocityPeriodicMeasureType"></element>
+			<element name="Value" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+		</sequence>
+	</complexType>
+	
+    <complexType name="VelocityPeriodicMeasureType">
+         <sequence>
+             <element name="CustType" minOccurs="1" maxOccurs="unbounded" type="tns:CustTypeOpenEnum"/>
+
+        </sequence>
+	</complexType>
+	
+
+    <complexType name="AllowedCustTypesType">
+    <sequence>
+             <element name="CustType" minOccurs="1" maxOccurs="unbounded" type="tns:CustTypeOpenEnum"/>
+
+        </sequence>
+    
+    </complexType>
+</schema>

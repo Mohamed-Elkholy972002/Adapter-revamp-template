@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+	<include schemaLocation="CoreLib.xsd"></include>
+    <include schemaLocation="CoreEnum.xsd"></include>
+
+	<complexType name="KeyExchangeRqType">
+		<sequence>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="MerchantAcctInfo"
+				type="tns:AccountMerchantInfoType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="KeySpecs" type="tns:KeySpecsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="UseGWTrmlKey" type="boolean" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="EncryptionMode" type="tns:EncryptionModeType" maxOccurs="1" minOccurs="0"></element>
+			<element name="RandomNumberSize" type="decimal" maxOccurs="1" minOccurs="0"/>
+			
+		</sequence>
+	</complexType>
+
+	<complexType name="KeyExchangeRsType">
+		<sequence>
+			<element name="CSP" type="tns:Identifier_Type" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="MerchantAcctInfo" type="tns:AccountMerchantInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<choice>
+				<element name="KeySpecs" type="tns:KeySpecsType" maxOccurs="1"
+				minOccurs="0"></element>
+				<element name="KeySpecsList" type="tns:KeySpecsType" maxOccurs="unbounded"
+				minOccurs="0"></element>
+			</choice>
+			
+		</sequence>
+	</complexType>
+
+
+	<simpleType name="EncryptionModeType">
+		<restriction base="string">
+			<enumeration value="DUKPT"></enumeration>
+			<enumeration value="GENRN"></enumeration>
+		</restriction>
+	</simpleType>
+</schema>

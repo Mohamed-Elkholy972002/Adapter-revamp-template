@@ -1,0 +1,8 @@
+adapter-web-service-configs:
+  Configs:
+    DebitAddRq:
+      url: "http://localhost:9090/mockHalanBusinessFacadePortBinding"
+      timeout: 3000
+    DebitRevRq:
+      url: "http://localhost:9090/mockHalanBusinessFacadePortBinding"
+      timeout: 3000

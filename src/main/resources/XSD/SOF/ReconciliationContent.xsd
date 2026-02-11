@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+    <include schemaLocation="CoreLib.xsd"></include>
+
+
+    <complexType name="ReconPrcInfoType">
+    	<sequence>
+    		<element name="CustServProvID" minOccurs="0" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="36"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="BankID" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="36"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="ReconID" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="36"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="ReconDt" minOccurs="1" maxOccurs="1"
+    			type="date">
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ReconCutOffType">
+		<sequence>
+			<element name="TriggerCutOffInfo" type="tns:TriggerCutOffInfoType"
+            	minOccurs="1" maxOccurs="1">
+            </element>
+            	<element name="ReconPrcInfo" 
+					minOccurs="1" maxOccurs="1" type="tns:CspReconProcessInfoType">
+			</element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ReconTotalsType">
+		<sequence>
+			<element name="ReconPrcInfo" type="tns:ReconPrcInfoType" maxOccurs="1" minOccurs="1"></element>
+	        <choice>
+				<element name="BillTypeTotals" type="tns:BillTypeTotalsType" minOccurs="0" maxOccurs="unbounded">
+				</element>
+				<element name="SuspectTrxInfo" type="tns:TrxInfoListType" minOccurs="0" maxOccurs="1">
+				</element>
+				<element name="NeedReversalTrxInfo" type="tns:TrxInfoListType" minOccurs="0" maxOccurs="1">
+				</element>
+				<element name="ChunkStartDelimiter" type="tns:ChunkStartDelimiter" minOccurs="0" maxOccurs="1">
+				</element>
+				<element name="ChunkEndDelimiter" type="tns:ChunkEndDelimiter" minOccurs="0" maxOccurs="1"></element>
+			</choice>
+		</sequence>
+	</complexType>
+
+	<complexType name="BillTypeTotalsType">
+		<sequence>		
+            <element name="BillTypeCode" type="long" minOccurs="1" maxOccurs="1"></element>
+            <element name="TotalsInfo" type="tns:TotalsInfoType" 
+				minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TotalsInfoType">
+		<sequence>
+			<element name="TransStatus" type="tns:TransStatusEnum" 
+				minOccurs="1" maxOccurs="1"></element>
+		<element name="TotalTrxCount" type="decimal" 
+				minOccurs="1" maxOccurs="1"></element>
+		<element name="TotalTrxAmt" type="decimal" 
+				minOccurs="1" maxOccurs="1"></element>
+		<element name="TotalTrxCustFees" type="decimal" 
+				minOccurs="1" maxOccurs="1"></element>
+		<element name="TotalTrxHash" type="string" 
+				minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SuspectTrxInfoType">
+		<complexContent>
+			<extension base="tns:TrxInfoListType">
+
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="NeedReversalTrxInfoType">
+		<complexContent>
+			<extension base="tns:TrxInfoListType">
+
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="TrxInfoListType">
+		<sequence>
+            <element name="CurrentIndex" type="long" maxOccurs="1" minOccurs="1">
+			</element>
+            <element name="TotalCount" type="long" maxOccurs="1" minOccurs="1"></element>
+            <element name="TrxInfo" type="tns:TrxInfoType" minOccurs="1"
+				maxOccurs="unbounded">
+			</element>
+
+		</sequence>
+	</complexType>
+	
+	<complexType name="TrxInfoType">
+		<sequence>
+			<element name="TrxUUID" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="tns:Identifier_Type">
+						<pattern
+							value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}">
+						</pattern>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="TrxMsg" type="string" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="BillerCode" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="TrxAmt" type="tns:CurAmtType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+
+			<element name="CustFees" type="tns:CurAmtType" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="BillTypeCode" type="long" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="BillingAcc" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="36"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="TrxMthd" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="TrxStatus" type="tns:PmtStatusType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="FawryRefNo" type="tns:FawryRefNoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="BillNo" type="tns:BillNoType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="BillerCharges" type="tns:CurAmtType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="TrxDate" type="dateTime" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="DrTrxUID" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="tns:Identifier_Type">
+						<pattern
+							value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}">
+						</pattern>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="DrDate" type="dateTime" maxOccurs="1"
+				minOccurs="0">
+			</element>
+
+			<element name="FawryUUID" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="tns:Identifier_Type">
+						<pattern
+							value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}">
+						</pattern>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="FawryDate" type="dateTime" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="BillerUUID" maxOccurs="1" minOccurs="0">
+				<simpleType>
+					<restriction base="tns:Identifier_Type">
+						<pattern
+							value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}">
+						</pattern>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BillerDate" type="dateTime" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="OriginatorCode" type="string" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+   
+   
+   <complexType name="ReconTotalsResultType">
+		<sequence>
+			<element name="CspReconResultPrcInfo"
+				type="tns:CspReconResultPrcInfoType" minOccurs="1" maxOccurs="1">
+			</element>
+			<element name="ReconTotalsResultList"
+				type="tns:ReconTotalsResultListType" minOccurs="1" maxOccurs="1">
+			</element>
+			<element name="ReconTrxResultList"
+				type="tns:ReconTrxResultListType" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="NeedReversalTrxList"
+				type="tns:NeedReversalTrxListType" minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="FailedBankList" type="tns:FailedBankListType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+		</sequence>
+   </complexType>
+ 	
+ 	<complexType name="ReconTrxResultListType">
+ 		<sequence>
+ 			<element name="UnRecoveredTrx" type="tns:UnRecoveredTrxType" 
+ 				minOccurs="1" maxOccurs="unbounded"></element>
+ 		</sequence>
+ 	</complexType>
+ 	
+ 	<complexType name="ReconTotalsResultListType">
+ 		<sequence>
+
+
+ 			<element name="BillTypesRecon" type="tns:BillTypesReconType" maxOccurs="unbounded" minOccurs="1"></element>
+ 		</sequence>
+ 	</complexType>
+
+ 	<complexType name="CspReconResultPrcInfoType">
+ 		<complexContent>
+ 			<extension base="tns:CspReconProcessInfoType">
+ 				<sequence>
+ 					<element name="StartTime" type="dateTime"
+ 						minOccurs="0" maxOccurs="1">
+ 					</element>
+ 					<element name="EndTime" type="dateTime"
+ 						minOccurs="0" maxOccurs="1">
+ 					</element>
+ 					<element name="ReconPrcStatus"
+ 						type="tns:ReconPrcStatusEnum" minOccurs="1" maxOccurs="1">
+ 					</element>
+
+ 				</sequence>
+ 			</extension>
+ 		</complexContent>
+ 	</complexType>
+
+
+
+ 	<complexType name="BillTypeTotalsReconType">
+		<complexContent>
+			<extension base="tns:BillTypeTotalsType">
+				<sequence>
+
+					<element name="ReconStatusInfo"
+						type="tns:ReconStatusInfoType" minOccurs="0" maxOccurs="1">
+					</element>
+
+
+				</sequence>
+
+			</extension>
+		</complexContent>  
+	</complexType>
+
+	<complexType name="ReconStatusInfoType">
+ 		<sequence>
+ 			<element name="ReconStatus" type="tns:ReconStatusCodeEnum"
+ 				minOccurs="1" maxOccurs="1">
+ 			</element>
+ 			<element name="ReconAdditionalStatus" type="tns:ReconAdditionalStatusEnum"
+ 	 				minOccurs="0" maxOccurs="1"></element>
+ 		
+ 		</sequence>
+ 	</complexType>
+ 	
+ 	
+ 	<complexType name="UnRecoveredTrxType">
+ 		<sequence>
+ 		<element name="currentIndex" type="long" 
+ 			minOccurs="0" maxOccurs="1"></element>
+ 		<element name="totalCount" type="long" 
+ 			minOccurs="0" maxOccurs="1"></element>
+ 			<element name="TrxReconInfo" type="tns:TrxReconInfoType" 
+ 				minOccurs="1" maxOccurs="unbounded"></element>
+ 		</sequence>
+ 	</complexType>
+ 	
+ 	<complexType name="TrxReconInfoType">
+ 		<sequence>
+ 			<element name="TrxInfo" minOccurs="1" maxOccurs="1" type="tns:TrxInfoType">
+            </element>
+ 			<element name="ReconStatusInfo" type="tns:ReconStatusInfoType" 
+ 				minOccurs="0" maxOccurs="1"></element>
+ 		</sequence>
+ 	</complexType>
+ 	
+
+ 	<simpleType name="FawryRefNoType">
+ 		<restriction base="string"></restriction>
+ 	</simpleType>
+
+ 	<simpleType name="BillNoType">
+ 		<restriction base="string"></restriction>
+ 	</simpleType>
+
+ 	<complexType name="BillerChargesType">
+ 		<sequence>
+ 			<element name="Amt" type="decimal"></element>
+ 			<element name="CurrCode" type="string"></element>
+ 		</sequence>
+ 	</complexType>
+
+ 	<simpleType name="CustomerRefNoType">
+ 		<restriction base="string"></restriction>
+ 	</simpleType>
+
+ 	<complexType name="BillTypesReconType">
+ 		<sequence>
+ 			<element name="BankReconResultPrcInfo" type="tns:BankReconResultPrcInfoType" maxOccurs="1"
+ 				minOccurs="1">
+ 			</element>
+            <element name="BillTypeTotalsRecon"
+ 				type="tns:BillTypeTotalsReconType" maxOccurs="unbounded"
+ 				minOccurs="1">
+ 			</element>
+
+ 		</sequence>
+ 	</complexType>
+
+    <complexType name="BillTypesTotalsReconType"></complexType>
+
+    <complexType name="NeedReversalTrxListType">
+    	<sequence>
+    		<element name="NeedReversalTrxInfo" minOccurs="1" maxOccurs="unbounded"
+    			type="tns:TrxInfoListType">
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    
+    <complexType name="FailedBankType">
+    	<sequence>
+    		<element name="BankID" type="string" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ChunkStartDelimiter">
+    	<sequence>
+    		<element name="ElementTypeCode" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="ElementUsageCode" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ChunkEndDelimiter">
+    	<complexContent>
+            <extension base="tns:ChunkStartDelimiter"></extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="FailedBankListType">
+    	<sequence>
+    		<element name="FailedBank" type="tns:FailedBankType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CspReconProcessInfoType">
+    	<sequence>
+    		<element name="CustServProvID" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="36"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="ReconID" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="36"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="ReconDate" minOccurs="1" maxOccurs="1"
+    			type="date">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BankReconResultPrcInfoType">
+    	<sequence>
+    		<element name="BankID" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="36"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="ReconStatus" type="tns:ReconPrcStatusEnum" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>

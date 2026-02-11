@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+
+<include schemaLocation="CoreLib.xsd"></include>
+	<complexType name="GetAcctTypeSchemeRqType">
+		<sequence>
+			<element name="RecCtrlIn" type="tns:RecCtrlInType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="1" maxOccurs="1"></element>
+            
+            <element name="FetchAll" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="AcctTypeSchemeIds" minOccurs="0" maxOccurs="1"
+				type="tns:SchemeIdsType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="SchemeIdsType">
+		<sequence>
+			<element name="SchemeCode" minOccurs="1" maxOccurs="unbounded" type="tns:Identifier_Type"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetAcctTypeSchemeRsType">
+		<sequence>
+			<element name="RecCtrlOut" type="tns:RecCtrlOutType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			
+            <element name="DeliveryMethod" type="tns:DeliveryMethodOpenEnum" minOccurs="0" maxOccurs="1"></element>
+            <element name="AcctTypeSchemeDetailsRecs" minOccurs="0"
+				maxOccurs="1" type="tns:AcctTypeSchemeDetailsRecsType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="AcctTypeSchemeDetailsRecsType">
+		<sequence>
+			<element name="AcctTypeSchemeDetailsRec" minOccurs="1" maxOccurs="unbounded" type="tns:AcctTypeSchemeDetailsRecType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="AcctTypeSchemeDetailsRecType">
+		<sequence>
+			<element name="SchemeCode" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NamePrimLang" minOccurs="1" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="SchemeStatus" minOccurs="1" maxOccurs="1"
+				type="tns:SchemeStatusOpenEnum" />
+			<element name="IsDefault" type="boolean" maxOccurs="1" minOccurs="1"></element>
+			<element name="AccountTypes" minOccurs="0" maxOccurs="1"
+				type="tns:AccountTypesType" />
+			<element name="SchemeParameters" minOccurs="0" maxOccurs="1"
+				type="tns:SchemeParametersType" />
+			
+		</sequence>
+	</complexType>
+	
+	<complexType name="AccountTypesType">
+		<sequence>
+			<element name="AccountType" minOccurs="1" maxOccurs="unbounded" type="tns:AcctTypeOpenEnum"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SchemeParametersType">
+		<sequence>
+			<element name="SchemeParameter" minOccurs="1" maxOccurs="unbounded" type="tns:SchemeParameterType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SchemeParameterType">
+		<sequence>
+			<element name="ParameterCode" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type" />
+			<element name="NamePrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C40_Type" />
+			<element name="NameSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C160_Type" />
+			<element name="DescPrimLang" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="DescSecLang" minOccurs="0" maxOccurs="1"
+				type="tns:C320_Type" />
+			<element name="Regex" minOccurs="0" maxOccurs="1"
+				type="tns:C512_Type" />
+			<element name="IsUpdatable" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="IsVisible" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="IsFinal" minOccurs="0" maxOccurs="1"
+				type="boolean" />
+			<element name="FinalValue" minOccurs="0" maxOccurs="1"
+				type="tns:C80_Type" />
+			<element name="IsSystem" minOccurs="1" maxOccurs="1"
+				type="boolean" />
+			<element name="Cardinality" minOccurs="0" maxOccurs="1"
+				type="tns:SchemeParmCardinalityOpenEnum" />
+			<element name="SecurityMode" minOccurs="0" maxOccurs="1"
+				type="tns:SchemeParmSecurityModeOpenEnum" />
+			<element name="ORDER" minOccurs="0" maxOccurs="1" type="long" />
+		</sequence>
+	</complexType>
+		
+</schema>

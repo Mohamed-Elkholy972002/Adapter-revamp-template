@@ -1,0 +1,145 @@
+<schema targetNamespace="http://www.fawry-eg.com/ebpp/IFXMessages/"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.fawry-eg.com/ebpp/IFXMessages/">
+	<include schemaLocation="CoreLib.xsd"></include>
+	
+	<complexType name="MngAcctRqType">
+		<sequence>
+			<element name="AcctData" minOccurs="1" maxOccurs="1"
+				type="tns:AcctDataType" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="MngAcctRsType">
+		<sequence>
+			<element name="AcctData" minOccurs="1" maxOccurs="1"
+				type="tns:AcctDataType" />
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="AcctDataType">
+		<sequence>
+
+			<element name="OptType" minOccurs="1" maxOccurs="1"
+				type="tns:OptTypeEnum">
+			</element>
+
+			<element name="CustIds" type="tns:CustIdsType" minOccurs="0"
+				maxOccurs="1" />
+			<element maxOccurs="1" minOccurs="0" name="CSPCode">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="256" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="BillTypeCode" type="long" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="AcctInfo" type="tns:AccountInfoType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="AuthInfo" type="tns:AuthInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="ActivationMethod" minOccurs="0" maxOccurs="1"
+				type="tns:ActivationMethodType" />
+
+			<element name="ActClearingInfo"
+				type="tns:ActClearingInfoType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="ActTransferInfo"
+				type="tns:ActTransferInfoType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="MonthlyCreditLimit" type="decimal"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="ParentAcct" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="SupParentAcct" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+
+			<element name="CreditLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="DailyCrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="DailyDrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="StatusReason" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="StatusChangedBy" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="MonthlyDrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="WeeklyDrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="WeeklyCrLimit" type="decimal" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="LockAcctInfo" type="tns:AcctInfoType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="LockAmount" type="tns:CurAmtType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="TokenizationsData" type="tns:TokenizationsDataType" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ActivationMethodType">
+		<sequence>
+			<element name="ActivationMethodCode" minOccurs="1" maxOccurs="1"
+				type="tns:Identifier_Type"/>
+				
+			<element name="ActivationMethodParameters" type="tns:ActivationMethodParametersType"
+					maxOccurs="1" minOccurs="0"></element>
+			
+			<element name="ExternalSOFCode" minOccurs="0"
+				type="tns:Identifier_Type" />
+			
+			<element name="MerchantInfo" minOccurs="0" maxOccurs="1"
+				type="tns:MerchantInfoType"/>		
+			
+		</sequence>
+	</complexType>
+	
+	<complexType name="ActivationMethodParametersType">
+		<sequence>
+			<element name="ActivationMethodParameter" minOccurs="1" maxOccurs="unbounded"
+				type="tns:ActivationMethodParameterType" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ActivationMethodParameterType">
+		<sequence>
+			<element name="Key" maxOccurs="1" minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Value" maxOccurs="1" minOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="128"></maxLength>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
