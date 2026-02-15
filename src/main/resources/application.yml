@@ -11,9 +11,6 @@ spring:
       - "classpath:adapter/generalConfiguration/generalConfiguration.yml"
       - "classpath:adapter/BTC/BTcConfiguration.yml"
 
-
-
-
 logging:
   level:
     org.springframework: info

@@ -1,2 +1,2 @@
-rootProject.name = "HalanBNPLAdapter"
+rootProject.name = "adapter-template"
 
